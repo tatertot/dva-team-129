@@ -12,7 +12,7 @@
     "string": "^3.3.3",
     "topojson": "^3.0.2"
   },
-  "homepage": "https://github.gatech.edu/pages/mmarquez9/dva-dashboard/"
+  "homepage": "https://github.gatech.edu/pages/mmarquez9/dva-dashboard/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
