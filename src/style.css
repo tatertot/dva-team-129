@@ -1,0 +1,107 @@
+/* style.css */
+body {
+  display: grid;
+  min-height: 100%;
+  grid-template-rows: 50px 1fr;
+  grid-template-columns: 1fr 240px;
+  grid-template-areas: "nav nav"
+                       "content sidebar";
+  background-color: #f1dfd1;
+  background-image: linear-gradient(315deg, #f1dfd1 0%, #f6f0ea 100%);
+  color: #03455d;
+  font-family: Helvetica, Arial, SansSerif;
+  margin:0;
+  padding:0;
+}
+
+h1,h2 {
+  font-family: "Helvetica Neue";
+  font-weight: 500;
+  color:#023446;
+}
+
+h2 {
+  color: #21c479;
+}
+
+#root {
+  margin: 0
+}
+
+.nav {
+  grid-area: nav;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #023446;
+  font-weight: 700;
+  font-size: 20px;
+  color: #5FCCC2;
+
+  /*font-family: Arial, sans-serif;*/
+}
+.nav ul {
+  margin: 0;
+  padding: 15px 15px;
+  color: #5FCCC2;
+}
+.nav ul li {
+    display: inline-block;
+    list-style: none;
+    height: 100vh;
+  }
+
+.main {
+  grid-area: content;
+  padding: 0 20px;
+  height: 800px;
+}
+.aside {
+  grid-area: sidebar;
+  background-color: #08AEEA;
+  background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
+  padding:10px;
+  font-size:14px;
+}
+
+.aside ul {
+  margin:0;
+  padding:0;
+}
+
+.aside li {
+  list-style: none;
+  margin:10px;
+}
+/* map styles */
+/* https://stackoverflow.com/questions/16918194/d3-js-mouseover-event-not-working-properly-on-svg-group */
+/* The g element is just an empty container which cannot capture click events (see documentation for pointer-events property). */
+
+.states {
+  pointer-events: all;
+}
+
+.state-borders {
+  fill: steelblue;
+  stroke: #fff;
+  stroke-width: 0.5px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: all;
+}
+.state-borders:hover {
+  opacity: .6;
+  cursor: pointer;
+}
+
+/* Fix flash of unstyled content, add style tag to html doc*/
+html {
+    visibility: visible;
+    opacity: 1;
+}
+/* Resources
+https://cssgradient.io/
+css grids: https://medium.com/flexbox-and-grids/how-to-efficiently-master-the-css-grid-in-a-jiffy-585d0c213577
+https://www.color-hex.com/color/08aeea
+https://www.color-hex.com/color/2af598
+https://convertingcolors.com/rgb-color-95_204_194.html
+ */

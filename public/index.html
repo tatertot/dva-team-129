@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>html{visibility: hidden;opacity:0;}</style>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta
@@ -26,7 +27,30 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <nav class="nav">
+      <ul>
+        <li class="nav-item text-nowrap">
+          <a class="navbar-brand">Team 129: Health Care Spending vs. Perceived Healthiness</a>
+        </li>
+      </ul>
+    </nav>
+
+    <main class="main">
+      <div id="root"></div>
+    </main>
+    <aside class="aside">
+      Ideas:
+      <ul>
+        <li><strong>Visualization presenting our data</strong></li>
+        <li>Show Top 5/Bottom 5 states, as a list or in a table</li>
+        <li>Clicking on State will zoom map to state and show health metrics at county level</li>
+        <li>Tool Tip on map to show additional info</li>
+        <li>Line graphs showing all years and forecast?</li>
+        <li><strong>Visualization showing how are models were made</strong></li>
+        <li>Interactive visualization that shows forecasting by adjusting metrics, using sliders?</li>
+
+      </ul>
+    </aside>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
