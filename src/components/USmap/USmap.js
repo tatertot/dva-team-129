@@ -43,7 +43,7 @@ class USmap extends Component {
     }
 
     if (props.values) {
-      quantize.domain([0,10]);
+      quantize.domain([0,11]);
     }
 
     return {
