@@ -29,7 +29,8 @@ class USmap extends Component {
     // projection.translate([props.width/2, props.height/2])
     //   .scale(props.width * 1.3);
 
-    if (props.zoom && props.usTopoJson) {
+    // remove ! to enable zoom
+    if (!props.zoom && props.usTopoJson) {
       console.log('zoom on');
       const us = props.usTopoJson,
         statePaths = topojson.feature(us, us.objects.states).features,
@@ -87,7 +88,7 @@ class USmap extends Component {
             <USstate
               geoPath={geoPath}
               feature={feature}
-              zoom={null}
+              zoom={zoom}
               key={feature.id}
               value={this.getValue(feature.id)}
               quantize={quantize}

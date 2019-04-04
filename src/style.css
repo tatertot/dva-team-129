@@ -76,10 +76,6 @@ h2 {
 /* https://stackoverflow.com/questions/16918194/d3-js-mouseover-event-not-working-properly-on-svg-group */
 /* The g element is just an empty container which cannot capture click events (see documentation for pointer-events property). */
 
-.states {
-  pointer-events: all;
-}
-
 .state-borders {
   fill: steelblue;
   stroke: #fff;

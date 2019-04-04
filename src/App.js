@@ -53,9 +53,7 @@ class App extends Component {
                   USstateNames={USstateNames}
                   x={0}
                   y={0}
-                  width={500}
-                  height={500}
-                  zoom={null}
+                  zoom={1}
                   values={stateValues}
            />
          </svg>
