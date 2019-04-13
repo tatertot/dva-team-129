@@ -1,5 +1,4 @@
 import React from "react";
-import Toggle from "./Toggle";
 
 class DropDown extends React.Component {
   // constructor(props) {
