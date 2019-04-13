@@ -3,32 +3,34 @@ body {
   display: grid;
   min-height: 100%;
   grid-template-rows: 50px 1fr;
-  grid-template-columns: 1fr 240px;
+  grid-template-columns: 240px 1fr ;
   grid-template-areas: "nav nav"
-                       "content sidebar";
-  background-color: #f1dfd1;
-  background-image: linear-gradient(315deg, #f1dfd1 0%, #f6f0ea 100%);
+                       "sidebar content ";
+  /*background-color: #f1dfd1;*/
+  /*background-image: linear-gradient(315deg, #f1dfd1 0%, #f6f0ea 100%);*/
+  background-color: #08AEEA;
+  background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
   color: #03455d;
   font-family: Helvetica, Arial, SansSerif;
   margin:0;
   padding:0;
 }
 
-h1,h2,
-.h1, .h2{
+h1, h2, h3,
+.h1, .h2 {
   font-family: "Helvetica Neue";
   font-weight: 500;
   color:#023446;
 }
 
 h2, .h2 {
-  color: #21c479;
+  color: #0579a3;
 }
 
 .stateTitle {
   font-family: "Helvetica Neue";
   font-weight: 800;
-  color:#023446;
+  color: #157a4c;
   font-size: 20px;
 }
 
@@ -62,14 +64,14 @@ h2, .h2 {
 }
 .main {
   grid-area: content;
-  padding: 0 20px;
+  padding: 0 10px;
   height: 800px;
     margin: 0 auto;
 }
 .aside {
   grid-area: sidebar;
-  background-color: #08AEEA;
-  background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
+  /*background-color: #08AEEA;*/
+  /*background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);*/
   padding:10px;
   font-size:14px;
 }
@@ -101,7 +103,7 @@ h2, .h2 {
 }
 
 #stateDropDown {
-  margin: 0 auto;
+  margin-bottom:5px;
 }
 /* Fix flash of unstyled content, add style tag to html doc*/
 html {
@@ -115,4 +117,31 @@ css grids: https://medium.com/flexbox-and-grids/how-to-efficiently-master-the-cs
 https://www.color-hex.com/color/08aeea
 https://www.color-hex.com/color/2af598
 https://convertingcolors.com/rgb-color-95_204_194.html
+
+Shades of green:
+#2af598
+#25dc88
+#21c479
+#1dab6a
+#19935b
+#157a4c
+#10623c
+#0c492d
+#08311e
+#04180f
+#000000
+
+#08aeea
+#079cd2
+#068bbb
+#0579a3
+#04688c
+#045775
+#03455d
+#023446
+#01222e
+#001117
+#000000
+
+
  */

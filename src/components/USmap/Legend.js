@@ -33,12 +33,14 @@ class Legend extends Component {
           if (d[0] == null) d[0] = xScale.domain()[0];
           if (d[1] == null) d[1] = xScale.domain()[1];
           return (
-            <g key={i}><rect
-                style={{fill: ChoroplethColors[i], width: 20, height: 20}}
-                y={60+20*i}
+            <g key={i}>
+              <rect
+                style={{fill: ChoroplethColors[i], width: 20, height: 20, stroke: 'black'}}
+                x={5}
+                y={300+20*i}
                 title={null}
-            />
-            <text fontSize={10} x={22} y={70+20*i}>{i}%</text>
+              />
+              <text fontSize={10} x={27} y={310+20*i}>{i}%</text>
             </g>
           )
           }

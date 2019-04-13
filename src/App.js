@@ -72,7 +72,7 @@ class App extends Component {
            updateDataFilter={this.updateDataFilter}
            />
          <svg width="960" height="500">
-             {/*<rect x={0} y={0} width={500} height={500} fill={"#fcf8f5"} ></rect>*/}
+           <rect x={0} y={0} width={960} height={500} fill={"#fcf8f5"} ></rect>
 
            <USmap usTopoJson={usTopoJson}
                   USstateNames={USstateNames}
@@ -87,11 +87,12 @@ class App extends Component {
                  y="0"
                  width="600"
                  height="500"
-                 style={{ fill: "#fcf8f5" }}
+                 style={{ fill: "#f6f0ea" }}
            />
            <DataContent zoomToState={zoomToState} values={stateValues} />
 
 
+           <rect x={0} y={0} width={960} height={500} fill={"none"} stroke={"black"} ></rect>
 
          </svg>
        </div>
