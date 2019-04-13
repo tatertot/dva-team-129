@@ -25,21 +25,30 @@ class USmap extends Component {
   // need to avoid complex calculation, check performance, use memoization, etc
   static getDerivedStateFromProps(props, state) {
     let { projection, quantize, geoPath } = state;
-    // getting ready for zooming
-    // projection.translate([props.width/2, props.height/2])
-    //   .scale(props.width * 1.3);
+    // need for zooming
+    // console.log('props', props)
+    projection.translate([props.width/2 + 20, props.height/2])
+      .scale(props.width * 1.2);
 
     // remove ! to enable zoom
-    if (!props.zoom && props.usTopoJson) {
-      console.log('zoom on');
+    if (props.zoomToState == 'all') {
+      projection.scale(props.width * 1.2);
+    }
+    else if (props.zoomToState && props.usTopoJson) {
+
       const us = props.usTopoJson,
         statePaths = topojson.feature(us, us.objects.states).features,
-        id = _.find(props.USstateNames, { code: props.zoom }).id;
+        id = _.find(props.USstateNames, { name: props.zoomToState }).id;
+        console.log('zoom: ', id);
+        projection.scale(props.width * 4.5);
 
-      projection.scale(props.width * 4.5);
+      const centroid = geoPath.centroid(_.find(statePaths, { id: id })),
+        translate = projection.translate();
 
-      // const centroid = geoPath.centroid(_.find(statePaths), { id: id })),
-      //   translate = projection.translate();
+        projection.translate([
+          translate[0] - centroid[0] + props.width/2 + 20,
+          translate[1] - centroid[1] + props.height/2 + 50
+      ]);
     }
 
     if (props.values) {
@@ -54,20 +63,22 @@ class USmap extends Component {
   }
 
   getValue(id) {
-    console.log('prop vals', this.props.values);
+    // console.log('prop vals', this.props.values);
     const row = _.find(this.props.values, {stateId: id});
 
     if (row) {
-      console.log('log',id, row.percentChange);
+      // console.log('log',id, row.percentChange);
       return row.percentChange;
     }
     return null;
   }
 
+
+
   render() {
 
     const { geoPath, quantize } = this.state,
-      { usTopoJson, values, zoom } = this.props;
+      { usTopoJson, values, zoomToState } = this.props;
 
     if (!usTopoJson) {
       return null;
@@ -82,15 +93,22 @@ class USmap extends Component {
         USstates = topojson.feature(us, us.objects.states).features;
         //console.log('USstates>>>>', USstates);
 
+        // console.log('values', values);
+        const stateValueMap = _.fromPairs(
+          values.map(d => [d.stateId, d.percentChange])
+        );
+        // console.log('values', stateValueMap);
+
       return (
         <g className="states">
           {USstates.map(feature => (
             <USstate
               geoPath={geoPath}
               feature={feature}
-              zoom={zoom}
+              zoomToState={zoomToState}
               key={feature.id}
-              value={this.getValue(feature.id)}
+              // value={this.getValue(feature.id)}
+              value={stateValueMap[feature.id]}
               quantize={quantize}
             />
           ))};

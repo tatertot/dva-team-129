@@ -35,10 +35,10 @@ class Legend extends Component {
           return (
             <g key={i}><rect
                 style={{fill: ChoroplethColors[i], width: 20, height: 20}}
-                y={20*i}
+                y={60+20*i}
                 title={null}
             />
-            <text fontSize={10} x={22} y={20*i}>{i}%</text>
+            <text fontSize={10} x={22} y={70+20*i}>{i}%</text>
             </g>
           )
           }

@@ -18,8 +18,8 @@ const BlankColor = 'rgb(198,219,239)';
 
 class USstate extends Component {
   shouldComponentUpdate(nextProps, nextState) {
-    const { zoom, value } = this.props;
-    return zoom !== nextProps.zoom || value !== nextProps.value;
+    const { zoomToState, value } = this.props;
+    return zoomToState !== nextProps.zoomToState || value !== nextProps.value;
   }
 
   highlight() {
