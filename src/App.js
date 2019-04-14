@@ -53,7 +53,7 @@ class App extends Component {
       stateId: state.stateId,
       state: this.getStateName(state),
       numDaysPerYear: { 2011: state[2011], 2012: state[2012], 2013: state[2013], 2014: state[2014],
-                        2015: state[2015], 2016: state[2016], 2017: state[2017], 2018: state[2018]}
+                        2015: state[2015], 2016: state[2016], 2017: state[2017]}
       };
 
     return null;
@@ -64,19 +64,18 @@ class App extends Component {
       stateId: state.stateId,
       state: this.getStateName(state),
       numDaysPerYear: { 2011: state[2011], 2012: state[2012], 2013: state[2013], 2014: state[2014],
-                        2015: state[2015], 2016: state[2016], 2017: state[2017], 2018: state[2018]}
+                        2015: state[2015], 2016: state[2016], 2017: state[2017]}
       };
 
     return null;
   }
 
     genHealthDays(state) {
-    console.log(state);
       return {
       stateId: state.stateId,
       state: this.getStateName(state),
       numDaysPerYear: { 2011: state[2011], 2012: state[2012], 2013: state[2013], 2014: state[2014],
-                        2015: state[2015], 2016: state[2016], 2017: state[2017], 2018: state[2018]}
+                        2015: state[2015], 2016: state[2016], 2017: state[2017]}
       };
 
     return null;

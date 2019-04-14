@@ -7,11 +7,11 @@ const XAxis = D3blackbox(function() {
 
   const scale = d3
     .scaleLinear()
-    .domain([2011, 2018])
+    .domain([2011, 2017])
     .range([0, 400]);
   const axis = d3.axisBottom(scale)
                 .tickFormat(d3.format('d'))
-                .ticks(8);
+                .ticks(7);
 
   d3.select(this.anchor.current).call(axis);
 });

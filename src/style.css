@@ -85,6 +85,11 @@ h2, .h2 {
   list-style: none;
   margin:10px;
 }
+
+.avgLine {
+  stroke-dasharray: 5,5;
+}
+
 /* map styles */
 /* https://stackoverflow.com/questions/16918194/d3-js-mouseover-event-not-working-properly-on-svg-group */
 /* The g element is just an empty container which cannot capture click events (see documentation for pointer-events property). */

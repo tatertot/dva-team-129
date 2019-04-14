@@ -11,7 +11,7 @@ const YAxis = D3blackbox(function() {
     .range([0, 250]);
   const axis = d3.axisLeft(scale)
                 .tickFormat(d3.format('d'))
-                .ticks(8);
+                .ticks(7);
 
   d3.select(this.anchor.current).call(axis);
 });
