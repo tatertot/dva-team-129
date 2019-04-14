@@ -13,12 +13,18 @@ export const loadData = (callback = _.noop) => {
     Promise.all([
         d3.json("data/us.json"), //state paths
         d3.csv("data/sample.csv"),
+        d3.csv("data/state_ment_health.csv"),
+        d3.csv("data/state_phys_health.csv"),
+        d3.csv("data/state_gen_health.csv"),
         d3.tsv("data/us-state-names.tsv", cleanUSStateName)
-    ]).then(([us, sampleData, USstateNames]) => {
+    ]).then(([us, sampleData, mentalHealth, physHealth, genHealth, USstateNames]) => {
         console.log('hello data');
         callback({
           usTopoJson: us,
           sampleData: sampleData,
+          mentalHealth: mentalHealth,
+          physHealth: physHealth,
+          genHealth: genHealth,
           USstateNames: USstateNames
         });
     });

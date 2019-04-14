@@ -15,10 +15,8 @@ export default function D3blackbox(D3render) {
     }
 
     render() {
-       const { x, y } = this.props;
-       return (
-           <g transform={`translate(${x}, ${y})`} ref={this.anchor} />
-       );
+      const { x, y } = this.props;
+      return <g transform={`translate(${x}, ${y})`} ref={this.anchor} />;
     }
   };
 }

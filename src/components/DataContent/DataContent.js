@@ -5,6 +5,7 @@ import * as d3 from 'd3';
 import _ from 'lodash';
 
 import StateTitle from './StateTitle';
+import LineGraph from "../LineGraph/LineGraph";
 
 class DataContent extends Component {
   constructor(props) {
@@ -12,10 +13,16 @@ class DataContent extends Component {
   }
 
   render() {
-    const { zoomToState, values } = this.props;
+    const { zoomToState, values, mentalHealthDays, physHealthDays, genHealthDays } = this.props;
     if (zoomToState !== 'all') {
       return (
+        <g>
         <StateTitle zoomToState={zoomToState} values={values} />
+        <LineGraph  zoomToState={zoomToState}
+                    mentalHealthDays={mentalHealthDays}
+                    physHealthDays={physHealthDays}
+                    genHealthDays={genHealthDays} />
+        </g>
       )
     }
     else {

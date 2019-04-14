@@ -3,7 +3,7 @@ body {
   display: grid;
   min-height: 100%;
   grid-template-rows: 50px 1fr;
-  grid-template-columns: 240px 1fr ;
+  grid-template-columns: 220px 1fr ;
   grid-template-areas: "nav nav"
                        "sidebar content ";
   /*background-color: #f1dfd1;*/

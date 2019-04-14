@@ -98,7 +98,7 @@ class USmap extends Component {
           values.map(d => [d.stateId, d.percentChange])
         );
         // console.log('values', stateValueMap);
-
+console.log('values',values);
       return (
         <g className="states">
           {USstates.map(feature => (
