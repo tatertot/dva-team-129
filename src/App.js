@@ -15,6 +15,7 @@ class App extends Component {
     physHealth: [],
     genHealth: [],
     USstateNames: [],
+    statePerCapita: [],
     USstateFilter: () => true,
     filteredBy: {
        USstate: "*",
@@ -44,6 +45,17 @@ class App extends Component {
     return {
       stateId: this.getStateId(state.State_Name),
       state: state.State_Name,
+      percentChange : state.Average_Annual_Percent_Growth
+    };
+  }
+
+  statePerCapitaValue(state) {
+    return {
+      stateId: this.getStateId(state.State_Name),
+      state: state.State_Name,
+      years: {2001:state.Y2001,2002:state.Y2002,2003:state.Y2003,2004:state.Y2004,2005:state.Y2005,2006:state.Y2006,
+        2007:state.Y2007,2008:state.Y2008,2009:state.Y2009,2010:state.Y2010,2011:state.Y2011,2012:state.Y2012,
+        2013:state.Y2013, 2014:state.Y2014, 2015:state.Y2015, 2016:state.Y2016, 2017:state.Y2017},
       percentChange : state.Average_Annual_Percent_Growth
     };
   }
@@ -95,6 +107,7 @@ class App extends Component {
       mentalHealth,
       physHealth,
       genHealth,
+      statePerCapita,
       USstateNames,
       filteredBy
     } = this.state;
@@ -113,6 +126,10 @@ class App extends Component {
 
     const stateValues = sampleData.map(
       state => this.stateValue(state)
+    ).filter(d => d.state !== "");
+
+    const statePerCapitaValues = statePerCapita.map(
+      state => this.statePerCapitaValue(state)
     ).filter(d => d.state !== "");
 
     let zoomToState = 'all';
@@ -151,6 +168,7 @@ class App extends Component {
                         mentalHealthDays={mentalHealthDays}
                         physHealthDays={physHealthDays}
                         genHealthDays={genHealthDays}
+                        statePerCapitaValues={statePerCapitaValues}
            />
            <rect x={0} y={0} width={1000} height={550} fill={"none"} stroke={"black"} ></rect>
 

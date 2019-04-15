@@ -17,11 +17,12 @@ class DataContent extends Component {
     if (zoomToState !== 'all') {
       return (
         <g>
-        <StateTitle zoomToState={zoomToState} values={values} />
-        <LineGraph  zoomToState={zoomToState}
-                    mentalHealthDays={mentalHealthDays}
-                    physHealthDays={physHealthDays}
-                    genHealthDays={genHealthDays} />
+          <StateTitle zoomToState={zoomToState} values={values} />
+          <LineGraph  zoomToState={zoomToState}
+                      mentalHealthDays={mentalHealthDays}
+                      physHealthDays={physHealthDays}
+                      genHealthDays={genHealthDays} />
+          <text x={520} y={470}>$X,XXX per capita health care spending (average)</text>
         </g>
       )
     }

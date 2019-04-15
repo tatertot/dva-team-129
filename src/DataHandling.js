@@ -16,8 +16,15 @@ export const loadData = (callback = _.noop) => {
         d3.csv("data/state_ment_health.csv"),
         d3.csv("data/state_phys_health.csv"),
         d3.csv("data/state_gen_health.csv"),
+        d3.csv("data/state_per_capita.csv"),
         d3.tsv("data/us-state-names.tsv", cleanUSStateName)
-    ]).then(([us, sampleData, mentalHealth, physHealth, genHealth, USstateNames]) => {
+    ]).then(([us,
+              sampleData,
+              mentalHealth,
+              physHealth,
+              genHealth,
+              statePerCapita,
+              USstateNames]) => {
         console.log('hello data');
         callback({
           usTopoJson: us,
@@ -25,6 +32,7 @@ export const loadData = (callback = _.noop) => {
           mentalHealth: mentalHealth,
           physHealth: physHealth,
           genHealth: genHealth,
+          statePerCapita: statePerCapita,
           USstateNames: USstateNames
         });
     });
