@@ -26,6 +26,11 @@ class USstate extends Component {
     console.log('hover, show percent change', this.props.value);
   }
 
+  selectState() {
+    console.log('click', this.props.zoomToState, this.props.value);
+    this.props.zoomToState= this.props.stateId
+  }
+
   render() {
     const { value, geoPath, feature, quantize } = this.props;
     let color = BlankColor;
@@ -40,6 +45,7 @@ class USstate extends Component {
             title={feature.id}
             className="state-borders"
             onMouseOver={this.highlight.bind(this)}
+            onClick={this.selectState.bind(this)}
        />
     );
   }

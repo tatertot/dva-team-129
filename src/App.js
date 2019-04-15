@@ -86,7 +86,7 @@ class App extends Component {
       return {
       stateId: state.stateId,
       state: this.getStateName(state),
-      numDaysPerYear: { 2011: state[2011], 2012: state[2012], 2013: state[2013], 2014: state[2014],
+      scorePerYear: { 2011: state[2011], 2012: state[2012], 2013: state[2013], 2014: state[2014],
                         2015: state[2015], 2016: state[2016], 2017: state[2017]}
       };
 
@@ -167,7 +167,7 @@ class App extends Component {
                         values={stateValues}
                         mentalHealthDays={mentalHealthDays}
                         physHealthDays={physHealthDays}
-                        genHealthDays={genHealthDays}
+                        genHealthScore={genHealthDays}
                         statePerCapitaValues={statePerCapitaValues}
            />
            <rect x={0} y={0} width={1000} height={550} fill={"none"} stroke={"black"} ></rect>

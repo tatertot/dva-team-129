@@ -21,6 +21,13 @@ class LineGraph extends Component {
     }
   };
 
+  scoreValue(a,b) {
+    return {
+      year: parseInt(b),
+      score: a
+    }
+  };
+
   circleMark(year,days){
     return (
       <circle
@@ -36,7 +43,7 @@ class LineGraph extends Component {
 
   render() {
 
-    const { zoomToState, values, mentalHealthDays, physHealthDays, genHealthDays } = this.props;
+    const { zoomToState, values, mentalHealthDays, physHealthDays, genHealthScore } = this.props;
 
 
     const height = 250;
@@ -51,20 +58,23 @@ class LineGraph extends Component {
 
     const line = d3.line()
       .x((d)=>xScale(d.year) + 20)
-      .y((d)=>yScale(d.days));
-
+      .y((d)=>yScale(d.days))
     const mentalData = _.find(mentalHealthDays, {state:zoomToState});
     const physData = _.find(physHealthDays, {state:zoomToState});
-    const genData = _.find(genHealthDays, {state:zoomToState});
+    const genData = _.find(genHealthScore, {state:zoomToState});
 
     const mentalHealthData =  _.map(mentalData.numDaysPerYear, (a,b) =>this.yearValue(a,b));
     const physHealthData =  _.map(physData.numDaysPerYear, (a,b) =>this.yearValue(a,b));
-    const genHealthData =  _.map(genData.numDaysPerYear, (a,b) =>this.yearValue(a,b));
+    const genHealthData =  _.map(genData.scorePerYear, (a,b) =>this.scoreValue(a,b));
 
+    const genHealthMean = d3.mean(genHealthData, (d) => d.score);
+
+debugger;
     return (
       <g>
         <text x={520} y={60}>Mental and Physical Healthy Days</text>
         <svg x={520} y={80}>
+          <Legend />
 
           <AvgLine data={mentalHealthDays}
                    x={520}
@@ -88,22 +98,25 @@ class LineGraph extends Component {
                 stroke={"magenta"}
                 strokeWidth={2}
           />
-          <path className="line"
-                d={line(genHealthData)}
-                fill={"none"}
-                stroke={"tomato"}
-                strokeWidth={2}
-          />
+
           {_.map(mentalHealthData, (d) => this.circleMark(xScale(d.year),yScale(d.days)))}
           {_.map(physHealthData, (d) => this.circleMark(xScale(d.year),yScale(d.days)))}
 
-
+          <text x={30} y={35} transform={"rotate(-90 30 30)"} className={"axisLabel"}>Days</text>
+          <text x={388} y={245} className={"axisLabel"}>Years</text>
 
           <XAxis x={20} y={height} />
           <YAxis x={20} y={0} />
-          <Legend />
 
+
+
+          <circle cx={30} cy={310} r={20} fill={"#a4bec8"} />
+          <text x={15} y={315}>{genHealthMean.toFixed(2)}</text>
+          <text x={60} y={307}>Avg. general health indicator </text>
+          <text x={60} y={323} fontSize={12} wordSpacing={2}>1=Very Good 2=Good 3=Ok 4=Poor 5=Very Poor</text>
+          {/*<XAxis x={20} y={height} />*/}
         </svg>
+
       </g>
     )
   }

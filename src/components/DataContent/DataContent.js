@@ -13,7 +13,7 @@ class DataContent extends Component {
   }
 
   render() {
-    const { zoomToState, values, mentalHealthDays, physHealthDays, genHealthDays } = this.props;
+    const { zoomToState, values, mentalHealthDays, physHealthDays, genHealthScore } = this.props;
     if (zoomToState !== 'all') {
       return (
         <g>
@@ -21,7 +21,7 @@ class DataContent extends Component {
           <LineGraph  zoomToState={zoomToState}
                       mentalHealthDays={mentalHealthDays}
                       physHealthDays={physHealthDays}
-                      genHealthDays={genHealthDays} />
+                      genHealthScore={genHealthScore} />
           <text x={520} y={470}>$X,XXX per capita health care spending (average)</text>
         </g>
       )

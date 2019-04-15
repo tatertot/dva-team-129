@@ -110,6 +110,12 @@ h2, .h2 {
 #stateDropDown {
   margin-bottom:5px;
 }
+
+.axisLabel {
+  font-size: 12px;
+  font-weight: bold;
+  font-color: #023446
+}
 /* Fix flash of unstyled content, add style tag to html doc*/
 html {
     visibility: visible;

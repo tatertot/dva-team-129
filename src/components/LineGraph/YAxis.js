@@ -1,5 +1,3 @@
-// src/components/LineGraph/XAxis.js
-
 import * as d3 from "d3";
 import D3blackbox from "../D3blackbox";
 
@@ -11,7 +9,7 @@ const YAxis = D3blackbox(function() {
     .range([0, 250]);
   const axis = d3.axisLeft(scale)
                 .tickFormat(d3.format('d'))
-                .ticks(7);
+                .ticks(6);
 
   d3.select(this.anchor.current).call(axis);
 });

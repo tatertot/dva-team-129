@@ -11,11 +11,10 @@ class Controls extends React.Component {
     let [USstate] = window.location.hash
             .replace("#", "")
             .split("-");
-
-
-        if (USstate !== "*" && USstate) {
-            this.updateUSstateFilter(USstate);
-        }
+    
+    if (USstate !== "*" && USstate) {
+        this.updateUSstateFilter(USstate);
+    }
 
   }
 

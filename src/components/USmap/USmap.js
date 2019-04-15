@@ -109,6 +109,7 @@ class USmap extends Component {
               // value={this.getValue(feature.id)}
               value={stateValueMap[feature.id]}
               quantize={quantize}
+
             />
           ))};
 

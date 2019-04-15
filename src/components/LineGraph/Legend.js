@@ -4,8 +4,8 @@ import * as d3 from "d3";
 import React, {Component} from "react";
 import _ from "lodash";
 
-const lineColors = ['purple', 'magenta', 'tomato'];
-const lineTitles = ['Mental Health', 'Physical Health', 'General Health']
+const lineColors = ['purple', 'magenta'];
+const lineTitles = ['Mental Health', 'Physical Health']
 
 
 class Legend extends Component {
@@ -19,12 +19,12 @@ class Legend extends Component {
             <g key={i}>
               <circle
                 style={{fill: lineColors[i], width: 20, height: 20, stroke: 'black'}}
-                cx={10}
-                cy={300+20*i}
+                cx={210 + 110*i}
+                cy={20}
                 title={lineTitles[i]}
-                r={6}
+                r={5}
               />
-              <text fontSize={12} x={27} y={305+20*i}>{lineTitles[i]}</text>
+              <text fontSize={12} x={219 +110*i} y={25}>{lineTitles[i]}</text>
             </g>
           )
           }
