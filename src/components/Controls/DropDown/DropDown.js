@@ -1,16 +1,11 @@
 import React from "react";
 
 class DropDown extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {value: 'All'};
-  //   this.selectUSstate = this.selectUSstate.bind(this);
-  // }
 
   selectUSstate = ( event, newState ) => {
     // this.setState({value: event.target.value});
     let selected = event.target.value;
-    console.log('selected->', event.target.value);
+    console.log('selected->', event.target.value, selected, newState);
     this.props.updateDataFilter( selected, !newState);
   };
 

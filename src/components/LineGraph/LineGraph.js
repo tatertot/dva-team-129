@@ -68,7 +68,7 @@ class LineGraph extends Component {
     const genHealthData =  _.map(genData.scorePerYear, (a,b) =>this.scoreValue(a,b));
 
     const genHealthMean = d3.mean(genHealthData, (d) => d.score);
-    
+
     return (
       <g>
         <text x={520} y={60}>Mental and Physical Healthy Days</text>

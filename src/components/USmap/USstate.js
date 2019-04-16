@@ -17,6 +17,52 @@ const ChoroplethColors = [
 const BlankColor = 'rgb(198,219,239)';
 
 class USstate extends Component {
+
+  state = {
+    USstateFilter: () => true,
+    USstate: "*"
+  }
+
+  // need to create for interaction between d3 and react
+  pRef = React.createRef();
+
+  componenetDidMount() {
+    let [USstate] = window.location.hash
+            .replace("#", "")
+            .split("-");
+
+    if (USstate !== "*" && USstate) {
+        this.updateUSstateFilter(USstate);
+    }
+
+  }
+
+  updateUSstateFilter = (USstate, reset) => {
+
+    let filter = d => d.State_Name === USstate;
+
+    this.setState(
+      {
+        USstateFilter: filter,
+        USstate: USstate
+      },
+      () => this.notifyUpdate()
+    );
+  }
+
+  // Rudimentary "routing"
+  notifyUpdate(){
+    window.location.hash = [this.state.USstate || "*"].join("-");
+    this.props.updateDataFilter(
+      (filters => {
+        return d => filters.USstateFilter(d);
+      })(this.state),
+      {
+        USstate: this.state.USstate
+      }
+    );
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
     const { zoomToState, value } = this.props;
     return zoomToState !== nextProps.zoomToState || value !== nextProps.value;
@@ -26,9 +72,10 @@ class USstate extends Component {
     console.log('hover, show percent change', this.props.value);
   }
 
-  selectState() {
-    console.log('click', this.props.zoomToState, this.props.value);
-    this.props.zoomToState= this.props.stateId
+  selectUSstate = (event, newState) => {
+    const stateName = _.find(this.props.USstateNames, { id: parseInt(this.pRef.current.attributes.title.value) }).name;
+    // this.props.updateDataFilter(stateName, !newState)
+    this.updateUSstateFilter(stateName)
   }
 
   render() {
@@ -45,7 +92,9 @@ class USstate extends Component {
             title={feature.id}
             className="state-borders"
             onMouseOver={this.highlight.bind(this)}
-            onClick={this.selectState.bind(this)}
+            onClick={this.selectUSstate.bind(this)}
+            ref={this.pRef}
+
        />
     );
   }

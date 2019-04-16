@@ -11,7 +11,7 @@ class Controls extends React.Component {
     let [USstate] = window.location.hash
             .replace("#", "")
             .split("-");
-    
+
     if (USstate !== "*" && USstate) {
         this.updateUSstateFilter(USstate);
     }
@@ -21,13 +21,6 @@ class Controls extends React.Component {
   updateUSstateFilter = (USstate, reset) => {
 
     let filter = d => d.State_Name === USstate;
-    // console.log('filter', filter);
-    // console.log('state', USstate);
-    // if (reset || !USstate) {
-    //   console.log('should i not be here?');
-    //   filter = () => true;
-    //   USstate = "*"
-    // }
 
     this.setState(
       {
@@ -41,7 +34,6 @@ class Controls extends React.Component {
   // Rudimentary "routing"
   notifyUpdate(){
     window.location.hash = [this.state.USstate || "*"].join("-");
-    console.log('notify update');
     this.props.updateDataFilter(
       (filters => {
         return d => filters.USstateFilter(d);

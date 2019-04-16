@@ -94,6 +94,7 @@ class App extends Component {
   }
 
   updateDataFilter = (filter, filteredBy) => {
+    //console.log('filter', filter, filteredBy);
     this.setState({
       USstateFilter: filter,
       filteredBy: filteredBy
@@ -156,6 +157,7 @@ class App extends Component {
                   height={400}
                   zoomToState={zoomToState}
                   values={stateValues}
+                  updateDataFilter={this.updateDataFilter}
            />
            <rect x="500"
                  y="0"

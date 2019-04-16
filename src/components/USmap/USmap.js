@@ -39,7 +39,6 @@ class USmap extends Component {
       const us = props.usTopoJson,
         statePaths = topojson.feature(us, us.objects.states).features,
         id = _.find(props.USstateNames, { name: props.zoomToState }).id;
-        console.log('zoom: ', id);
         projection.scale(props.width * 4.5);
 
       const centroid = geoPath.centroid(_.find(statePaths, { id: id })),
@@ -63,7 +62,6 @@ class USmap extends Component {
   }
 
   getValue(id) {
-    // console.log('prop vals', this.props.values);
     const row = _.find(this.props.values, {stateId: id});
 
     if (row) {
@@ -78,7 +76,7 @@ class USmap extends Component {
   render() {
 
     const { geoPath, quantize } = this.state,
-      { usTopoJson, values, zoomToState } = this.props;
+      { usTopoJson, values, zoomToState, updateDataFilter } = this.props;
 
     if (!usTopoJson) {
       return null;
@@ -91,7 +89,6 @@ class USmap extends Component {
           (a,b) => a !== b
         ),
         USstates = topojson.feature(us, us.objects.states).features;
-        //console.log('USstates>>>>', USstates);
 
         // console.log('values', values);
         const stateValueMap = _.fromPairs(
@@ -109,7 +106,9 @@ class USmap extends Component {
               // value={this.getValue(feature.id)}
               value={stateValueMap[feature.id]}
               quantize={quantize}
-
+              updateDataFilter={updateDataFilter}
+              stateName={feature.id}
+              USstateNames={this.props.USstateNames}
             />
           ))};
 
