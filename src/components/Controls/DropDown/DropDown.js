@@ -10,7 +10,8 @@ class DropDown extends React.Component {
   };
 
   _addOption(name){
-    let key = `toggle-${name}`,
+    if (name !== "") {
+      let key = `toggle-${name}`,
       label = name;
 
     if (this.props.capitalize) {
@@ -25,6 +26,7 @@ class DropDown extends React.Component {
             >
               {name}
             </option>
+    }
   }
 
   render() {
@@ -32,7 +34,8 @@ class DropDown extends React.Component {
     return (
       <div id="stateDropDown">
         <select onChange={this.selectUSstate}>
-          <option value="all">All States</option>
+          <option value="all">Select State</option>
+          <option value="all">Show All States</option>
           {toggleNames.map(name => this._addOption(name))}
         </select>
       </div>

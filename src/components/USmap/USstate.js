@@ -20,7 +20,7 @@ class USstate extends Component {
 
   state = {
     USstateFilter: () => true,
-    USstate: "*"
+    USstate: "*",
   }
 
   // need to create for interaction between d3 and react
@@ -32,9 +32,8 @@ class USstate extends Component {
             .split("-");
 
     if (USstate !== "*" && USstate) {
-        this.updateUSstateFilter(USstate);
+      this.updateUSstateFilter(USstate);
     }
-
   }
 
   updateUSstateFilter = (USstate, reset) => {
@@ -68,8 +67,15 @@ class USstate extends Component {
     return zoomToState !== nextProps.zoomToState || value !== nextProps.value;
   }
 
-  highlight() {
-    console.log('hover, show percent change', this.props.value);
+  highlight(event) {
+    console.log('hover, show percent change', this.props.value, this.state.USstate);
+    const stateName = _.find(this.props.USstateNames, { id: parseInt(this.pRef.current.attributes.title.value) }).name;
+    // this.props.updateDataFilter(stateName, !newState)
+    return (
+      <svg x={0} y={0} width={500} height={40} fill={"black"}>
+        <text>{stateName}</text>
+      </svg>
+    )
   }
 
   selectUSstate = (event, newState) => {
@@ -95,7 +101,7 @@ class USstate extends Component {
             onClick={this.selectUSstate.bind(this)}
             ref={this.pRef}
 
-       />
+      />
     );
   }
 }

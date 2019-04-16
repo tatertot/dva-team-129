@@ -47,8 +47,7 @@ class Controls extends React.Component {
   render() {
     const { data } = this.props;
     const USstates = new Set(data.map(d => d.State_Name));
-    // console.log('us states', USstates);
-
+    {console.log('USS', USstates, data)}
     return (
       <div>
         <DropDown

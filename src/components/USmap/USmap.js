@@ -39,6 +39,7 @@ class USmap extends Component {
       const us = props.usTopoJson,
         statePaths = topojson.feature(us, us.objects.states).features,
         id = _.find(props.USstateNames, { name: props.zoomToState }).id;
+        console.log('zoom: ', id);
         projection.scale(props.width * 4.5);
 
       const centroid = geoPath.centroid(_.find(statePaths, { id: id })),

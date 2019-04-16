@@ -152,7 +152,7 @@ class App extends Component {
            <USmap usTopoJson={usTopoJson}
                   USstateNames={USstateNames}
                   x={0}
-                  y={0}
+                  y={50}
                   width={500}
                   height={400}
                   zoomToState={zoomToState}
@@ -173,7 +173,8 @@ class App extends Component {
                         statePerCapitaValues={statePerCapitaValues}
            />
            <rect x={0} y={0} width={1000} height={550} fill={"none"} stroke={"black"} ></rect>
-
+           <rect x={1} y={1} width={500} height={40} fill={"#023446"} ></rect>
+           <text x={10} y={28} fill={"#abe2c9"} fontSize={20} fontWeight={"500"}>Healthcare Spending in the US</text>
          </svg>
        </div>
     );

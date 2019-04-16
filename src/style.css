@@ -2,6 +2,7 @@
 body {
   display: grid;
   min-height: 100%;
+  height: 800px;
   grid-template-rows: 50px 1fr;
   grid-template-columns: 220px 1fr ;
   grid-template-areas: "nav nav"
@@ -15,7 +16,9 @@ body {
   margin:0;
   padding:0;
 }
-
+.iframe {
+  overflow: hidden;
+}
 h1, h2, h3,
 .h1, .h2 {
   font-family: "Helvetica Neue";
@@ -114,7 +117,14 @@ h2, .h2 {
 .axisLabel {
   font-size: 12px;
   font-weight: bold;
-  font-color: #023446
+  color: #023446
+}
+
+.spending {
+  font-weight:bold;
+  fill: #19935b;
+  font-size: 24px;
+
 }
 /* Fix flash of unstyled content, add style tag to html doc*/
 html {
