@@ -9,18 +9,28 @@ import Controls from "./components/Controls/";
 import DataContent from "./components/DataContent";
 
 class App extends Component {
-  state = {
-    sampleData: [],
-    mentalHealth: [],
-    physHealth: [],
-    genHealth: [],
-    USstateNames: [],
-    statePerCapita: [],
-    USstateFilter: () => true,
-    filteredBy: {
-       USstate: "*",
-    }
-  };
+  constructor(props) {
+    super(props)
+    this.state = {
+      sampleData: [],
+      mentalHealth: [],
+      physHealth: [],
+      genHealth: [],
+      USstateNames: [],
+      statePerCapita: [],
+      USstateFilter: () => true,
+      filteredBy: {
+        USstate: "*",
+      },
+      stateLabel: "Pick State",
+      perCapitaChange: 0,
+      perCapitaMean: 0
+    };
+
+    this.onHover = this.onHover.bind(this)
+  }
+
+
 
   componentDidMount() {
     loadData(data => this.setState(data));
@@ -101,6 +111,15 @@ class App extends Component {
     });
   };
 
+  onHover = (stateName, perCapitaChange, perCapitaMean) => {
+    console.log('onHover-->>', stateName, perCapitaChange, perCapitaMean);
+    this.setState({
+      stateLabel: stateName,
+      perCapitaChange: perCapitaChange,
+      perCapitaMean: perCapitaMean
+    })
+  };
+
   render() {
     const {
       usTopoJson,
@@ -138,6 +157,13 @@ class App extends Component {
       zoomToState = this.state.filteredBy.USstate;
     }
 
+     // console.log('values', values);
+     //    const stateValueMap = _.fromPairs(
+     //      values.map(d => [d.stateId, d.percentChange])
+     //    );
+
+    //stateValueMap[feature.id]
+
     return (
        <div className="App container" id="main">
          <h1>Health Care Spending per State</h1>
@@ -148,7 +174,6 @@ class App extends Component {
            />
          <svg width="1000" height="550">
            <rect x={0} y={0} width={1000} height={550} fill={"#fcf8f5"} ></rect>
-
            <USmap usTopoJson={usTopoJson}
                   USstateNames={USstateNames}
                   x={0}
@@ -158,7 +183,12 @@ class App extends Component {
                   zoomToState={zoomToState}
                   values={stateValues}
                   updateDataFilter={this.updateDataFilter}
+                  onHover={this.onHover}
+                  stateData={this.state.label}
+                  statePerCapitaValues={statePerCapitaValues}
            />
+
+           <rect x={0} y={450} width={500} height={100} fill={"#dae3df"} ></rect>
            <rect x="500"
                  y="0"
                  width="500"
@@ -172,9 +202,18 @@ class App extends Component {
                         genHealthScore={genHealthDays}
                         statePerCapitaValues={statePerCapitaValues}
            />
-           <rect x={0} y={0} width={1000} height={550} fill={"none"} stroke={"black"} ></rect>
            <rect x={1} y={1} width={500} height={40} fill={"#023446"} ></rect>
            <text x={10} y={28} fill={"#abe2c9"} fontSize={20} fontWeight={"500"}>Healthcare Spending in the US</text>
+
+           <rect x={0} y={0} width={1000} height={550} fill={"none"} stroke={"black"} ></rect>
+
+           <text x={10} y={480} fill={"#023446"} fontSize={16} fontWeight={"700"}>Health Care Spending by State (2011-2017)</text>
+           <text x={10} y={500} fill={"#023446"} fontSize={16} fontWeight={"500"}>State: {this.state.stateLabel}</text>
+           <text x={10} y={520} fill={"#023446"} fontSize={16} fontWeight={"500"}>Ave. Yearly Increase: {this.state.perCapitaChange}%</text>
+           <text x={10} y={540} fill={"#023446"} fontSize={16} fontWeight={"500"}>Per Capita: ${this.state.perCapitaMean}</text>
+
+
+
          </svg>
        </div>
     );

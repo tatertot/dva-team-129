@@ -20,6 +20,7 @@ class USmap extends Component {
     };
   }
 
+
   // getDerivedStateFromProps gets called on every component render,
   // otherwise viz would be one update behind, however,
   // need to avoid complex calculation, check performance, use memoization, etc
@@ -76,8 +77,8 @@ class USmap extends Component {
 
   render() {
 
-    const { geoPath, quantize } = this.state,
-      { usTopoJson, values, zoomToState, updateDataFilter } = this.props;
+    const { geoPath, quantize, hover } = this.state,
+      { usTopoJson, values, zoomToState, updateDataFilter, onHover, statePerCapitaValues} = this.props;
 
     if (!usTopoJson) {
       return null;
@@ -110,6 +111,9 @@ class USmap extends Component {
               updateDataFilter={updateDataFilter}
               stateName={feature.id}
               USstateNames={this.props.USstateNames}
+              hover={hover}
+              onHover={onHover}
+              statePerCapitaValues={statePerCapitaValues}
             />
           ))};
 
@@ -121,6 +125,7 @@ class USmap extends Component {
                 }}
           />
           <Legend x={0} y={0} />
+
         </g>
       );
     }

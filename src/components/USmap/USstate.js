@@ -1,5 +1,6 @@
 // src/components/USstate/USstate.js
 import React, { Component } from "react";
+import * as d3 from 'd3';
 import _ from "lodash";
 
 const ChoroplethColors = [
@@ -17,11 +18,15 @@ const ChoroplethColors = [
 const BlankColor = 'rgb(198,219,239)';
 
 class USstate extends Component {
+  constructor(props) {
+    super(props);
 
-  state = {
-    USstateFilter: () => true,
-    USstate: "*",
+    this.state = {
+      USstateFilter: () => true,
+      USstate: "*",
+    }
   }
+
 
   // need to create for interaction between d3 and react
   pRef = React.createRef();
@@ -43,7 +48,7 @@ class USstate extends Component {
     this.setState(
       {
         USstateFilter: filter,
-        USstate: USstate
+        USstate: USstate,
       },
       () => this.notifyUpdate()
     );
@@ -67,29 +72,54 @@ class USstate extends Component {
     return zoomToState !== nextProps.zoomToState || value !== nextProps.value;
   }
 
-  highlight(event) {
-    console.log('hover, show percent change', this.props.value, this.state.USstate);
-    const stateName = _.find(this.props.USstateNames, { id: parseInt(this.pRef.current.attributes.title.value) }).name;
-    // this.props.updateDataFilter(stateName, !newState)
-    return (
-      <svg x={0} y={0} width={500} height={40} fill={"black"}>
-        <text>{stateName}</text>
-      </svg>
-    )
+  getStateName() {
+    return  _.find(this.props.USstateNames, { id: parseInt(this.pRef.current.attributes.title.value) }).name;
   }
+
+  // getPerCapitaChange() {
+  //   return _.find(this.props.statePerCapitaValues, {state: stateName}).percentChange;
+  //
+  // }
+
 
   selectUSstate = (event, newState) => {
     const stateName = _.find(this.props.USstateNames, { id: parseInt(this.pRef.current.attributes.title.value) }).name;
     // this.props.updateDataFilter(stateName, !newState)
     this.updateUSstateFilter(stateName)
-  }
+  };
 
   render() {
-    const { value, geoPath, feature, quantize } = this.props;
+    const { value, geoPath, feature, quantize, statePerCapitaValues } = this.props;
     let color = BlankColor;
-
     if (value) {
+      //console.log('perCapita', perCapita);
       color = ChoroplethColors[quantize(value)];
+    }
+    const xScale = d3.scaleLinear();
+    var data = [
+      {"city":"seattle", "state":"WA", "population":652405, "land_area":83.9},
+      {"city":"new york", "state":"NY", "population":8405837, "land_area":302.6},
+      {"city":"boston", "state":"MA", "population":645966, "land_area":48.3},
+      {"city":"kansas city", "state":"MO", "population":467007, "land_area":315}
+    ];
+    // const d3mean = d3.mean(data, function(d) { return d.land_area; });
+    //console.log('d3', xScale, d3mean);
+    const highlight = () => {
+
+      const stateName = _.find(this.props.USstateNames, { id: parseInt(this.pRef.current.attributes.title.value) }).name;
+      const perCapitaChange = _.find(this.props.statePerCapitaValues, {state: stateName}).percentChange;
+
+      const years = _.find(this.props.statePerCapitaValues, {state: stateName}).years
+      const formattedYears = []
+        _.each(years, (a,b) => {
+          formattedYears.push({'year': a});
+        });
+
+      const perCapitaMean = d3.mean(formattedYears, (d) => {
+        return d.year;
+      });
+      //const perCapita = d3.mean(this.props.statePerCapitaValues, (d) => d.year);
+      this.props.onHover(stateName, perCapitaChange, perCapitaMean.toFixed(2));
     }
 
     return (
@@ -97,7 +127,7 @@ class USstate extends Component {
             style={{fill:color}}
             title={feature.id}
             className="state-borders"
-            onMouseOver={this.highlight.bind(this)}
+            onMouseOver={highlight.bind(this)}
             onClick={this.selectUSstate.bind(this)}
             ref={this.pRef}
 

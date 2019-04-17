@@ -30,8 +30,8 @@ class DataContent extends Component {
       return (
         <g>
         <text x={520} y={30} fontSize={20} fontWeight={"bold"} fill={"#023446"}>Overall US Healthcare Spending</text>
-          <text x={520} y={80} fontSize={18} fill={"rgb(8, 48, 107)"}><tspan class="spending">$XXXX</tspan> average private healthcare per enrollee</text>
-          <text x={520} y={110} fontSize={18} fill={"rgb(8, 48, 107)"}><tspan class="spending">$XXXX</tspan> average per capita</text>
+          <text x={520} y={80} fontSize={18} fill={"rgb(8, 48, 107)"}><tspan className="spending">$XXXX</tspan> average private healthcare per enrollee</text>
+          <text x={520} y={110} fontSize={18} fill={"rgb(8, 48, 107)"}><tspan className="spending">$XXXX</tspan> average per capita</text>
 
         <text x={520} y={150} fontSize={18} fontWeight={"bold"}>Top 3 states with highest per capita</text>
         <text x={520} y={180} fontSize={18} fill={"rgb(8, 48, 107)"}>1. State: $xxxx</text>

@@ -123,6 +123,7 @@ h2, .h2 {
 .spending {
   font-weight:bold;
   fill: #19935b;
+  /*fill: rgb(98,208,190);*/
   font-size: 24px;
 
 }
