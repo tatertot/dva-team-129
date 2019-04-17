@@ -179,8 +179,11 @@ class App extends Component {
 
     return (
        <div className="App container" id="main">
-         <h1>Health Care Spending per State</h1>
-         <h2>Annual Average Percentage Growth From Medicaid Enrollment 2011-2014</h2>
+         <h1 style={{"marginBottom":"15px"}}>Health Care Spending and Healthiness in the US</h1>
+         <p style={{"marginTop":"15px"}}>The project attempts to show the relationship between health care spending and overall healthiness using data from
+           the Behavioral Risk Factor Surveillance System (BRFSS) and from the Centers for Medicare and Medicaid Services (CMS).
+           The visualization shows the comparison of health and pending across the US and for each state.
+         </p>
          <Controls
            data={sampleData}
            updateDataFilter={this.updateDataFilter}
@@ -222,13 +225,13 @@ class App extends Component {
            <rect x={0} y={0} width={1000} height={550} fill={"none"} stroke={"black"} ></rect>
 
            <text x={15} y={450} className={"stateData"} fontWeight={"bold"}>Health Care Spending by State (2011-2017)</text>
-           <text x={15} y={470} className={"stateData"}>State: {this.state.stateLabel}</text>
-           <text x={15} y={490} className={"stateData"} fontWeight={"bold"} fontSize={13}>State Medicaid</text>
-           <text x={15} y={510} className={"stateData"}>Ave. Yearly Increase: {this.state.perCapitaChange}%</text>
-           <text x={15} y={530} className={"stateData"}>Per Capita: ${this.state.perCapitaMean}</text>
-           <text x={250} y={490} className={"stateData"} fontWeight={"bold"} fontSize={13}>Private Health Insurance</text>
-           <text x={250} y={510} className={"stateData"}>Ave. Yearly Increase: {this.state.phiPerEnrolleeChange}%</text>
-           <text x={250} y={530} className={"stateData"}>Per Capita: ${this.state.phiPerEnrolleeMean}</text>
+           <text x={15} y={475} className={"stateData"}>State: {this.state.stateLabel}</text>
+           <text x={15} y={495} className={"stateData"} fontWeight={"bold"} fontSize={13}>State Medicaid</text>
+           <text x={15} y={515} className={"stateData"}>Ave. Yearly Increase: {this.state.perCapitaChange}%</text>
+           <text x={15} y={535} className={"stateData"}>Per Capita: ${this.state.perCapitaMean}</text>
+           <text x={250} y={495} className={"stateData"} fontWeight={"bold"} fontSize={13}>Private Health Insurance</text>
+           <text x={250} y={515} className={"stateData"}>Ave. Yearly Increase: {this.state.phiPerEnrolleeChange}%</text>
+           <text x={250} y={535} className={"stateData"}>Per Capita: ${this.state.phiPerEnrolleeMean}</text>
          </svg>
        </div>
     );

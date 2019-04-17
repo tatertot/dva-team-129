@@ -29,6 +29,7 @@ class Legend extends Component {
 
     return (
       <g>
+        <rect x={0} y={360} fill={"white"} opacity={.4} height={70} width={500} />
         {ChoroplethColors.map(function (d,i) {
           if (d[0] == null) d[0] = xScale.domain()[0];
           if (d[1] == null) d[1] = xScale.domain()[1];
@@ -36,15 +37,16 @@ class Legend extends Component {
             <g key={i}>
               <rect
                 style={{fill: ChoroplethColors[i], width: 20, height: 20, stroke: 'black'}}
-                x={5}
-                y={300+20*i}
+                x={170+20*i}
+                y={370}
                 title={null}
               />
-              <text fontSize={10} x={27} y={310+20*i}>{i}%</text>
+              <text fontSize={10} x={175 +20*i} y={400}>{i}%</text>
             </g>
           )
           }
         )};
+        <text x={110} y={415} fontSize={11} fontWeight={"bold"}>Annual Avg. Growth From Medicaid Enrollment 2011-2017</text>
       </g>
 
     );
