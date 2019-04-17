@@ -4,7 +4,6 @@ import * as d3 from 'd3';
 import _ from "lodash";
 
 const ChoroplethColors = [
-    'rgb(247,251,255)',
     'rgb(222,235,247)',
     'rgb(198,219,239)',
     'rgb(158,202,225)',
@@ -90,6 +89,7 @@ class USstate extends Component {
 
   render() {
     const { value, geoPath, feature, quantize, statePerCapitaValues, phiPerEnrolleeValues } = this.props;
+    console.log('value', value);
     let color = BlankColor;
     if (value) {
       color = ChoroplethColors[quantize(value)];

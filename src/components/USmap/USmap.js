@@ -51,7 +51,7 @@ class USmap extends Component {
     }
 
     if (props.values) {
-      quantize.domain([0,11]);
+      quantize.domain([0,10]);
     }
 
     return {
@@ -62,10 +62,10 @@ class USmap extends Component {
   }
 
   getValue(id) {
-    const row = _.find(this.props.values, {stateId: id});
+    const row = _.find(this.props.statePerCapita, {stateId: id});
 
     if (row) {
-      // console.log('log',id, row.percentChange);
+
       return row.percentChange;
     }
     return null;
@@ -94,6 +94,10 @@ class USmap extends Component {
         const stateValueMap = _.fromPairs(
           values.map(d => [d.stateId, d.percentChange])
         );
+      const perCapitaValueMap = _.fromPairs(
+          statePerCapitaValues.map(d => [d.stateId, d.percentChange])
+        );
+
         // console.log('values', stateValueMap);
       return (
         <g className="states">
@@ -104,7 +108,7 @@ class USmap extends Component {
               zoomToState={zoomToState}
               key={feature.id}
               // value={this.getValue(feature.id)}
-              value={stateValueMap[feature.id]}
+              value={perCapitaValueMap[feature.id]}
               quantize={quantize}
               updateDataFilter={updateDataFilter}
               stateName={feature.id}

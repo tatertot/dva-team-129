@@ -95,7 +95,7 @@ class App extends Component {
     return null;
   }
 
-    physHealthDays(state) {
+  physHealthDays(state) {
       return {
       stateId: state.stateId,
       state: this.getStateName(state),
@@ -106,7 +106,7 @@ class App extends Component {
     return null;
   }
 
-    genHealthDays(state) {
+  genHealthDays(state) {
       return {
       stateId: state.stateId,
       state: this.getStateName(state),
@@ -117,6 +117,10 @@ class App extends Component {
     return null;
   }
 
+  getUSphiMean = () => {
+    console.log('phi mean',this.phiPerEnrolleeValue);
+    // debugger;
+  }
   updateDataFilter = (filter, filteredBy) => {
     //console.log('filter', filter, filteredBy);
     this.setState({
@@ -177,12 +181,13 @@ class App extends Component {
       zoomToState = this.state.filteredBy.USstate;
     }
 
+    const phiMean = this.getUSphiMean();
     return (
        <div className="App container" id="main">
          <h1 style={{"marginBottom":"15px"}}>Health Care Spending and Healthiness in the US</h1>
          <p style={{"marginTop":"15px"}}>The project attempts to show the relationship between health care spending and overall healthiness using data from
            the Behavioral Risk Factor Surveillance System (BRFSS) and from the Centers for Medicare and Medicaid Services (CMS).
-           The visualization shows the comparison of health and pending across the US and for each state.
+           The visualization shows the comparison of health and spending across the US and for each state.
          </p>
          <Controls
            data={sampleData}

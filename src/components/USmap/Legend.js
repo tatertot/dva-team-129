@@ -29,7 +29,7 @@ class Legend extends Component {
 
     return (
       <g>
-        <rect x={0} y={360} fill={"white"} opacity={.4} height={70} width={500} />
+        <rect x={0} y={360} fill={"white"} opacity={.5} height={70} width={500} />
         {ChoroplethColors.map(function (d,i) {
           if (d[0] == null) d[0] = xScale.domain()[0];
           if (d[1] == null) d[1] = xScale.domain()[1];
