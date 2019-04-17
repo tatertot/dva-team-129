@@ -27,7 +27,6 @@ class USmap extends Component {
   static getDerivedStateFromProps(props, state) {
     let { projection, quantize, geoPath } = state;
     // need for zooming
-    // console.log('props', props)
     projection.translate([props.width/2 + 20, props.height/2])
       .scale(props.width * 1.2);
 
@@ -40,7 +39,6 @@ class USmap extends Component {
       const us = props.usTopoJson,
         statePaths = topojson.feature(us, us.objects.states).features,
         id = _.find(props.USstateNames, { name: props.zoomToState }).id;
-        console.log('zoom: ', id);
         projection.scale(props.width * 4.5);
 
       const centroid = geoPath.centroid(_.find(statePaths, { id: id })),
@@ -78,7 +76,7 @@ class USmap extends Component {
   render() {
 
     const { geoPath, quantize, hover } = this.state,
-      { usTopoJson, values, zoomToState, updateDataFilter, onHover, statePerCapitaValues} = this.props;
+      { usTopoJson, values, zoomToState, updateDataFilter, onHover, statePerCapitaValues, phiPerEnrolleeValues} = this.props;
 
     if (!usTopoJson) {
       return null;
@@ -114,6 +112,7 @@ class USmap extends Component {
               hover={hover}
               onHover={onHover}
               statePerCapitaValues={statePerCapitaValues}
+              phiPerEnrolleeValues={phiPerEnrolleeValues}
             />
           ))};
 

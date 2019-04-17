@@ -89,27 +89,18 @@ class USstate extends Component {
   };
 
   render() {
-    const { value, geoPath, feature, quantize, statePerCapitaValues } = this.props;
+    const { value, geoPath, feature, quantize, statePerCapitaValues, phiPerEnrolleeValues } = this.props;
     let color = BlankColor;
     if (value) {
-      //console.log('perCapita', perCapita);
       color = ChoroplethColors[quantize(value)];
     }
-    const xScale = d3.scaleLinear();
-    var data = [
-      {"city":"seattle", "state":"WA", "population":652405, "land_area":83.9},
-      {"city":"new york", "state":"NY", "population":8405837, "land_area":302.6},
-      {"city":"boston", "state":"MA", "population":645966, "land_area":48.3},
-      {"city":"kansas city", "state":"MO", "population":467007, "land_area":315}
-    ];
-    // const d3mean = d3.mean(data, function(d) { return d.land_area; });
-    //console.log('d3', xScale, d3mean);
+
     const highlight = () => {
 
       const stateName = _.find(this.props.USstateNames, { id: parseInt(this.pRef.current.attributes.title.value) }).name;
-      const perCapitaChange = _.find(this.props.statePerCapitaValues, {state: stateName}).percentChange;
+      const perCapitaChange = _.find(statePerCapitaValues, {state: stateName}).percentChange;
 
-      const years = _.find(this.props.statePerCapitaValues, {state: stateName}).years
+      const years = _.find(statePerCapitaValues, {state: stateName}).years
       const formattedYears = []
         _.each(years, (a,b) => {
           formattedYears.push({'year': a});
@@ -118,8 +109,24 @@ class USstate extends Component {
       const perCapitaMean = d3.mean(formattedYears, (d) => {
         return d.year;
       });
-      //const perCapita = d3.mean(this.props.statePerCapitaValues, (d) => d.year);
-      this.props.onHover(stateName, perCapitaChange, perCapitaMean.toFixed(2));
+
+      const phiPerEnrolleeChange = _.find(phiPerEnrolleeValues, {state:stateName}).percentChange;
+      const phiYears = _.find(phiPerEnrolleeValues, {state: stateName}).years;
+      const phiFormattedYears = []
+        _.each(phiYears, (a,b) => {
+          phiFormattedYears.push({'year': a});
+        });
+      const phiPerEnrolleeMean = d3.mean(phiFormattedYears, (d) => {
+        return d.year;
+      });
+
+      this.props.onHover(
+        stateName,
+        perCapitaChange,
+        perCapitaMean.toFixed(2),
+        phiPerEnrolleeChange,
+        phiPerEnrolleeMean.toFixed(2)
+      );
     }
 
     return (

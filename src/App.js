@@ -18,13 +18,16 @@ class App extends Component {
       genHealth: [],
       USstateNames: [],
       statePerCapita: [],
+      phiPerEnrollee: [],
       USstateFilter: () => true,
       filteredBy: {
         USstate: "*",
       },
       stateLabel: "Pick State",
-      perCapitaChange: 0,
-      perCapitaMean: 0
+      perCapitaChange: "--",
+      perCapitaMean: "--",
+      phiPerEnrolleeChange: "--",
+      phiPerEnrolleeMean:"--"
     };
 
     this.onHover = this.onHover.bind(this)
@@ -60,6 +63,17 @@ class App extends Component {
   }
 
   statePerCapitaValue(state) {
+    return {
+      stateId: this.getStateId(state.State_Name),
+      state: state.State_Name,
+      years: {2001:state.Y2001,2002:state.Y2002,2003:state.Y2003,2004:state.Y2004,2005:state.Y2005,2006:state.Y2006,
+        2007:state.Y2007,2008:state.Y2008,2009:state.Y2009,2010:state.Y2010,2011:state.Y2011,2012:state.Y2012,
+        2013:state.Y2013, 2014:state.Y2014, 2015:state.Y2015, 2016:state.Y2016, 2017:state.Y2017},
+      percentChange : state.Average_Annual_Percent_Growth
+    };
+  }
+
+  phiPerEnrolleeValue(state) {
     return {
       stateId: this.getStateId(state.State_Name),
       state: state.State_Name,
@@ -111,12 +125,13 @@ class App extends Component {
     });
   };
 
-  onHover = (stateName, perCapitaChange, perCapitaMean) => {
-    console.log('onHover-->>', stateName, perCapitaChange, perCapitaMean);
+  onHover = (stateName, perCapitaChange, perCapitaMean, phiPerEnrolleeChange, phiPerEnrolleeMean) => {
     this.setState({
       stateLabel: stateName,
       perCapitaChange: perCapitaChange,
-      perCapitaMean: perCapitaMean
+      perCapitaMean: perCapitaMean,
+      phiPerEnrolleeChange: phiPerEnrolleeChange,
+      phiPerEnrolleeMean: phiPerEnrolleeMean
     })
   };
 
@@ -128,6 +143,7 @@ class App extends Component {
       physHealth,
       genHealth,
       statePerCapita,
+      phiPerEnrollee,
       USstateNames,
       filteredBy
     } = this.state;
@@ -152,17 +168,14 @@ class App extends Component {
       state => this.statePerCapitaValue(state)
     ).filter(d => d.state !== "");
 
+    const phiPerEnrolleeValues = phiPerEnrollee.map(
+      state => this.phiPerEnrolleeValue(state)
+    ).filter(d => d.state !== "");
+
     let zoomToState = 'all';
     if (filteredBy.USstate !== '*') {
       zoomToState = this.state.filteredBy.USstate;
     }
-
-     // console.log('values', values);
-     //    const stateValueMap = _.fromPairs(
-     //      values.map(d => [d.stateId, d.percentChange])
-     //    );
-
-    //stateValueMap[feature.id]
 
     return (
        <div className="App container" id="main">
@@ -186,9 +199,10 @@ class App extends Component {
                   onHover={this.onHover}
                   stateData={this.state.label}
                   statePerCapitaValues={statePerCapitaValues}
+                  phiPerEnrolleeValues={phiPerEnrolleeValues}
            />
 
-           <rect x={0} y={450} width={500} height={100} fill={"#dae3df"} ></rect>
+           <rect x={0} y={425} width={500} height={125} fill={"#dae3df"} ></rect>
            <rect x="500"
                  y="0"
                  width="500"
@@ -203,17 +217,18 @@ class App extends Component {
                         statePerCapitaValues={statePerCapitaValues}
            />
            <rect x={1} y={1} width={500} height={40} fill={"#023446"} ></rect>
-           <text x={10} y={28} fill={"#abe2c9"} fontSize={20} fontWeight={"500"}>Healthcare Spending in the US</text>
+           <text x={15} y={28} fill={"#abe2c9"} fontSize={20} fontWeight={"500"}>Healthcare Spending in the US</text>
 
            <rect x={0} y={0} width={1000} height={550} fill={"none"} stroke={"black"} ></rect>
 
-           <text x={10} y={480} fill={"#023446"} fontSize={16} fontWeight={"700"}>Health Care Spending by State (2011-2017)</text>
-           <text x={10} y={500} fill={"#023446"} fontSize={16} fontWeight={"500"}>State: {this.state.stateLabel}</text>
-           <text x={10} y={520} fill={"#023446"} fontSize={16} fontWeight={"500"}>Ave. Yearly Increase: {this.state.perCapitaChange}%</text>
-           <text x={10} y={540} fill={"#023446"} fontSize={16} fontWeight={"500"}>Per Capita: ${this.state.perCapitaMean}</text>
-
-
-
+           <text x={15} y={450} className={"stateData"} fontWeight={"bold"}>Health Care Spending by State (2011-2017)</text>
+           <text x={15} y={470} className={"stateData"}>State: {this.state.stateLabel}</text>
+           <text x={15} y={490} className={"stateData"} fontWeight={"bold"} fontSize={13}>State Medicaid</text>
+           <text x={15} y={510} className={"stateData"}>Ave. Yearly Increase: {this.state.perCapitaChange}%</text>
+           <text x={15} y={530} className={"stateData"}>Per Capita: ${this.state.perCapitaMean}</text>
+           <text x={250} y={490} className={"stateData"} fontWeight={"bold"} fontSize={13}>Private Health Insurance</text>
+           <text x={250} y={510} className={"stateData"}>Ave. Yearly Increase: {this.state.phiPerEnrolleeChange}%</text>
+           <text x={250} y={530} className={"stateData"}>Per Capita: ${this.state.phiPerEnrolleeMean}</text>
          </svg>
        </div>
     );

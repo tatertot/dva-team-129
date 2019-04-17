@@ -17,6 +17,7 @@ export const loadData = (callback = _.noop) => {
         d3.csv("data/state_phys_health.csv"),
         d3.csv("data/state_gen_health.csv"),
         d3.csv("data/state_per_capita.csv"),
+        d3.csv("data/phi_per_enrollee.csv"),
         d3.tsv("data/us-state-names.tsv", cleanUSStateName)
     ]).then(([us,
               sampleData,
@@ -24,6 +25,7 @@ export const loadData = (callback = _.noop) => {
               physHealth,
               genHealth,
               statePerCapita,
+              phiPerEnrollee,
               USstateNames]) => {
         console.log('hello data');
         callback({
@@ -33,6 +35,7 @@ export const loadData = (callback = _.noop) => {
           physHealth: physHealth,
           genHealth: genHealth,
           statePerCapita: statePerCapita,
+          phiPerEnrollee: phiPerEnrollee,
           USstateNames: USstateNames
         });
     });

@@ -125,7 +125,10 @@ h2, .h2 {
   fill: #19935b;
   /*fill: rgb(98,208,190);*/
   font-size: 24px;
-
+}
+.stateData {
+  fill: "#023446";
+  font-ize: 15px;
 }
 /* Fix flash of unstyled content, add style tag to html doc*/
 html {
