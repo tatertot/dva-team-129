@@ -89,7 +89,6 @@ class USstate extends Component {
 
   render() {
     const { value, geoPath, feature, quantize, statePerCapitaValues, phiPerEnrolleeValues } = this.props;
-    console.log('value', value);
     let color = BlankColor;
     if (value) {
       color = ChoroplethColors[quantize(value)];

@@ -121,10 +121,6 @@ class App extends Component {
     return null;
   }
 
-  getUSphiMean = () => {
-    console.log('phi mean',this.phiPerEnrolleeValue);
-    // debugger;
-  }
   updateDataFilter = (filter, filteredBy) => {
     //console.log('filter', filter, filteredBy);
     this.setState({
@@ -190,12 +186,24 @@ class App extends Component {
     }
 
     const formattedPerCapitaYears = []
+
     const UScapita =  statePerCapitaValues.map(
-      state => _.each(state.years, (a,b) => {
+      state => _.each(state.years, (a) => {
           formattedPerCapitaYears.push({'year': a});
         })
     );
 
+    // statePerCapitaValues[0]['years']
+    const capita = []
+    _.map(statePerCapitaValues, (state) => {
+      const values = Object.values(state["years"]);
+        const mean = d3.mean(values, (d) => {
+          return d;
+        });
+        capita.push({'state':state["state"], 'mean':mean})
+    });
+
+    const sortedCapitas =_.sortBy(capita, ['mean', 'state']);
     const USperCapita = d3.mean(formattedPerCapitaYears, (d) => {
       return d.year;
     });
@@ -203,7 +211,7 @@ class App extends Component {
     const formattedPhiYears = []
     const phiCapita =  phiPerEnrolleeValues.map(
       state => _.each(state.years, (a,b) => {
-          formattedPhiYears.push({'year': a});
+          formattedPhiYears.push({'year': a, 'test':b});
         })
     );
 
@@ -216,7 +224,7 @@ class App extends Component {
     // if (USperCapitaMean) {
     //   this.setState({USperCapitaMean});
     // }
-    const phiMean = this.getUSphiMean();
+  
     return (
        <div className="App container" id="main">
          <h1 style={{"marginBottom":"15px"}}>Health Care Spending and Healthiness in the US</h1>
@@ -224,6 +232,7 @@ class App extends Component {
            the Behavioral Risk Factor Surveillance System (BRFSS) and from the Centers for Medicare and Medicaid Services (CMS).
            The visualization shows the comparison of health and spending across the US and for each state.
          </p>
+         {/*<div>{sortedCapitas[0].state}</div>*/}
          <Controls
            data={sampleData}
            updateDataFilter={this.updateDataFilter}
@@ -261,6 +270,7 @@ class App extends Component {
                         onStatUpdate={this.onStatUpdate}
                         USperCapitaMean={USperCapita}
                         phiPerCapitaMean={phiPerCapitaMean}
+                        sortedCapitas={sortedCapitas}
            />
            <rect x={1} y={1} width={500} height={40} fill={"#023446"} ></rect>
            <text x={15} y={28} fill={"#abe2c9"} fontSize={20} fontWeight={"500"}>Healthcare Spending in the US</text>
@@ -268,7 +278,7 @@ class App extends Component {
            <rect x={0} y={0} width={1000} height={550} fill={"none"} stroke={"black"} ></rect>
 
            <text x={15} y={450} className={"stateData"} fontWeight={"bold"}>Health Care Spending by State (2011-2017)</text>
-           <text x={15} y={475} className={"stateData"}>State: {this.state.stateLabel}</text>
+           <text x={15} y={472} className={"stateData"}>State: {this.state.stateLabel}</text>
            <text x={15} y={495} className={"stateData"} fontWeight={"bold"} fontSize={13}>State Medicaid</text>
            <text x={15} y={515} className={"stateData"}>Ave. Yearly Increase: {this.state.perCapitaChange}%</text>
            <text x={15} y={535} className={"stateData"}>Per Capita: ${this.state.perCapitaMean}</text>
@@ -276,9 +286,38 @@ class App extends Component {
            <text x={250} y={515} className={"stateData"}>Ave. Yearly Increase: {this.state.phiPerEnrolleeChange}%</text>
            <text x={250} y={535} className={"stateData"}>Per Capita: ${this.state.phiPerEnrolleeMean}</text>
          </svg>
+
        </div>
     );
   }
 }
 
 export default App;
+  // getUSphiMean = () => {
+  //   console.log('phi mean',this.phiPerEnrolleeValue);
+  //   // debugger;
+  // }
+
+    // const capitaByState = () => {
+    //   for (let i=0; i < statePerCapitaValues.length - 1; i++) {
+    //   // for (let j = 0; j < statePerCapitaValues[i]["years"].length - 1; j++) {
+    //   //   console.log('capita', i, j, statePerCapitaValues[i]['years'][j]);
+    //   // }
+    //     const values = Object.values(statePerCapitaValues[i]["years"]);
+    //     const mean = d3.mean(values, (d) => {
+    //       return d
+    //     });
+    //     capita.push({i: mean})
+    //   }
+    //   debugger;
+    // }
+
+
+    // const eachCapita = []
+    // const test = formattedCapita
+    // _.each(formattedPerCapita, (d) => {
+    //   stateCapita = d3.mean(d, (i) => {
+    //     return i.year;
+    //   });
+    //   eachCapita.push({'mean': stateCapita});
+    // }
