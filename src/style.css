@@ -129,6 +129,19 @@ h2, .h2 {
 .stateData {
   fill: "#023446";
 }
+
+.aside p {
+    margin:15px 0 5px;
+    padding:0;
+}
+.aside ul {
+    margin:0;
+    padding:0
+}
+.aside ul li {
+    margin:0;
+    padding:2px 0;
+}
 /* Fix flash of unstyled content, add style tag to html doc*/
 html {
     visibility: visible;

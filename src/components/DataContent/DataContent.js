@@ -15,7 +15,7 @@ class DataContent extends Component {
 
   render() {
     const { zoomToState, values, mentalHealthDays, physHealthDays, genHealthScore, statePerCapitaValues, USperCapitaMean,
-      phiPerCapitaMean, sortedCapitas } = this.props;
+      phiPerCapitaMean, sortedCapitas} = this.props;
 
 
     // const formattedPerCapitaYears = []
@@ -70,7 +70,8 @@ class DataContent extends Component {
           <LineGraph  zoomToState={zoomToState}
                       mentalHealthDays={mentalHealthDays}
                       physHealthDays={physHealthDays}
-                      genHealthScore={genHealthScore} />
+                      genHealthScore={genHealthScore}
+                      statePerCapitaValues={statePerCapitaValues}/>
           <text x={520} y={470}>$X,XXX per capita health care spending (average)</text>
         </g>
       )

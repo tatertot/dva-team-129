@@ -18,17 +18,25 @@ class Legend extends Component {
           return (
             <g key={i}>
               <circle
-                style={{fill: lineColors[i], width: 20, height: 20, stroke: 'black'}}
+                style={{fill: lineColors[i], width: 20, height: 20, stroke: 'gray'}}
                 cx={210 + 110*i}
                 cy={20}
                 title={lineTitles[i]}
-                r={5}
+                r={4}
               />
               <text fontSize={12} x={219 +110*i} y={25}>{lineTitles[i]}</text>
             </g>
           )
           }
         )};
+        <circle
+            style={{fill: "darksalmon", width: 20, height: 20, stroke: 'gray'}}
+            cx={30}
+            cy={237}
+            title={"Per Capita Spending"}
+            r={4}
+          />
+          <text fontSize={12} x={39} y={242}>Per Capita Spending</text>
       </g>
 
     );
