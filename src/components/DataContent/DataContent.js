@@ -12,8 +12,34 @@ class DataContent extends Component {
     super(props);
   }
 
+
   render() {
-    const { zoomToState, values, mentalHealthDays, physHealthDays, genHealthScore } = this.props;
+    const { zoomToState, values, mentalHealthDays, physHealthDays, genHealthScore, statePerCapitaValues, USperCapitaMean, phiPerCapitaMean } = this.props;
+
+
+    // const formattedPerCapitaYears = []
+    //   this.state.statePerCapitaValues.map(
+    //   state => _.each(state.years, (a,b) => {
+    //       formattedPerCapitaYears.push({'year': a});
+    //     })
+    // );
+    //
+    // const USperCapitaMean = d3.mean(formattedPerCapitaYears, (d) => {
+    //   return d.year;
+    // })
+
+    //this.props.onStatUpdate(USperCapitaMean);
+    let capitaMean = 0;
+    if(USperCapitaMean > 0) {
+       capitaMean = USperCapitaMean.toFixed(2)
+    }
+
+    let phiMean = 0;
+    if(phiPerCapitaMean > 0) {
+       phiMean = phiPerCapitaMean.toFixed(2)
+    }
+
+
     if (zoomToState !== 'all') {
       return (
         <g>
@@ -30,8 +56,8 @@ class DataContent extends Component {
       return (
         <g>
         <text x={520} y={30} fontSize={20} fontWeight={"bold"} fill={"#023446"}>Overall US Healthcare Spending</text>
-          <text x={520} y={80} fontSize={18} fill={"rgb(8, 48, 107)"}><tspan className="spending">$XXXX</tspan> average private healthcare per enrollee</text>
-          <text x={520} y={110} fontSize={18} fill={"rgb(8, 48, 107)"}><tspan className="spending">$XXXX</tspan> average per capita</text>
+          <text x={520} y={80} fontSize={18} fill={"rgb(8, 48, 107)"}><tspan className="spending">${phiMean}</tspan> average private healthcare per enrollee</text>
+          <text x={520} y={110} fontSize={18} fill={"rgb(8, 48, 107)"}><tspan className="spending">${capitaMean}</tspan> average per capita</text>
 
         <text x={520} y={150} fontSize={18} fontWeight={"bold"}>Top 3 states with highest per capita</text>
         <text x={520} y={180} fontSize={18} fill={"rgb(8, 48, 107)"}>1. State: $xxxx</text>
