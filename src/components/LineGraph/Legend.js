@@ -25,10 +25,14 @@ class Legend extends Component {
                 r={4}
               />
               <text fontSize={12} x={219 +110*i} y={25}>{lineTitles[i]}</text>
+              <text fontSize={12} x={205 +110*i} y={40} style={{fill: lineColors[i]}}><tspan fontSize={14}>--- </tspan>US Avg</text>
+
             </g>
           )
           }
         )};
+
+
         <circle
             style={{fill: "darksalmon", width: 20, height: 20, stroke: 'gray'}}
             cx={30}
@@ -37,6 +41,7 @@ class Legend extends Component {
             r={4}
           />
           <text fontSize={12} x={39} y={242}>Per Capita Spending</text>
+
       </g>
 
     );

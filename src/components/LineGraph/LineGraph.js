@@ -65,7 +65,8 @@ class LineGraph extends Component {
 
   render() {
 
-    const { zoomToState, values, mentalHealthDays, physHealthDays, genHealthScore, statePerCapitaValues } = this.props;
+    const { zoomToState, values, mentalHealthDays, physHealthDays, genHealthScore, statePerCapitaValues,
+      USmentalMean, USphysicalMean} = this.props;
 
 
     const height = 250;
@@ -74,8 +75,8 @@ class LineGraph extends Component {
     const xScale  = d3.scaleLinear()
       .domain([2011, 2017]).range([0,width])
 
-    const yScaleCapita  = d3.scaleLinear()
-      .domain([0, 12000]).range([120, 0])
+    const yScaleCapita = d3.scaleLinear()
+      .domain([0, 14000]).range([120, 0])
 
     const yScale = d3.scaleLinear()
       .domain([0, 31])
@@ -107,15 +108,30 @@ class LineGraph extends Component {
         <text x={575} y={65} fontWeight={"bold"} fill={"rgb(63, 59, 54)"}>Mental and Physical Healthy Days Per Month</text>
         <svg x={520} y={80}>
           <Legend />
+          {/*<text*/}
+              {/*x={width +20}*/}
+              {/*y={yScale(USmentalMean) - 12}*/}
+              {/*textAnchor="end"*/}
+              {/*fontSize={12}*/}
+              {/*fill={"gray"}*/}
+          {/*>US average*/}
+          {/*</text>*/}
 
-          <AvgLine data={mentalHealthDays}
-                   x={520}
+          <AvgLine x={520}
                    y={10}
                    width={400}
                    height={250}
                    bottomMargin={5}
-                   median={16}
-                   value={16}
+                   mean={USmentalMean}
+                   lineColor={"purple"}
+          />
+          <AvgLine x={520}
+                   y={10}
+                   width={400}
+                   height={250}
+                   bottomMargin={5}
+                   mean={USphysicalMean}
+                   lineColor={"magenta"}
           />
 
           <path className="line"
@@ -130,7 +146,7 @@ class LineGraph extends Component {
                 stroke={"magenta"}
                 strokeWidth={2}
           />
-          <svg y={145}>
+          <svg y={135}>
             <path className="line"
                d={capitaLine(perCapitaSlice)}
                fill={"none"}
@@ -153,11 +169,17 @@ class LineGraph extends Component {
 
 
 
-          <circle cx={30} cy={310} r={20} fill={"#a4bec8"} />
-          <text x={15} y={315}>{genHealthMean.toFixed(2)}</text>
-          <text x={60} y={307}>Avg. general health indicator </text>
-          <text x={60} y={323} fontSize={12} wordSpacing={2}>1=Very Good 2=Good 3=Ok 4=Poor 5=Very Poor</text>
-          {/*<XAxis x={20} y={height} />*/}
+          <circle cx={80} cy={330} r={30} fill={"#a4bec8"} />
+          <text x={65} y={335} fontWeight={"bold"}>{genHealthMean.toFixed(2)}</text>
+          <text x={120} y={327} fontWeight={"bold"}>Avg. general health indicator </text>
+          <text x={120} y={343} fontSize={12} wordSpacing={2}>1=Very Good 2=Good 3=Ok 4=Poor 5=Very Poor</text>
+          <text x={20} y={390} dy={0} width={200} height={50} fontSize={12}>
+            <tspan x={20} dy={"1.2em"}>Respondants answered a series of questions which were distilled into general,</tspan>
+            <tspan x={20} dy={"1.2em"}>physical and mental health scores.  For a summary on the analysis, take a</tspan>
+            <tspan x={20} dy={"1.2em"}>look at our
+            <tspan className={"datalink"}> <a href="https://github.gatech.edu/Team129/BRFSSProject/blob/master/models/brfss_data_lib.ipynb">
+               BRFSS Survey Questions Analysis</a></tspan>.</tspan>
+          </text>
         </svg>
 
       </g>

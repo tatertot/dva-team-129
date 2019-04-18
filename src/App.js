@@ -203,6 +203,14 @@ class App extends Component {
         capita.push({'state':state["state"], 'mean':mean})
     });
 
+
+
+
+    //     const mentalHealthMean = d3.mean(mentalHealthData, (d) => {
+    //   return d.days;
+    // });
+    // console.log('mental', mentalHealthMean);
+
     const sortedCapitas =_.sortBy(capita, ['mean', 'state']);
     const USperCapita = d3.mean(formattedPerCapitaYears, (d) => {
       return d.year;
@@ -218,6 +226,48 @@ class App extends Component {
     const phiPerCapitaMean = d3.mean(formattedPhiYears, (d) => {
       return d.year;
     });
+
+    const mentalMean = []
+    _.map(mentalHealthDays, (state) => {
+      const values = Object.values(state["numDaysPerYear"]);
+        const mean = d3.mean(values, (d) => {
+          return d;
+        });
+        mentalMean.push({'state':state["state"], 'mean':mean})
+    });
+    let USmentalMean = 0;
+    USmentalMean = d3.mean(mentalMean, (d) => {
+      return d.mean;
+    });
+
+    const getMentalMean= () => {
+      if (USmentalMean > 0) {
+        return USmentalMean.toFixed(2);
+      }
+      return USmentalMean;
+    }
+
+    let physicalMean = []
+    _.map(physHealthDays, (state) => {
+      const values = Object.values(state["numDaysPerYear"]);
+        const mean = d3.mean(values, (d) => {
+          return d;
+        });
+        physicalMean.push({'state':state["state"], 'mean':mean})
+    });
+
+    let USphysicalMean = 0;
+    USphysicalMean = d3.mean(physicalMean, (d) => {
+      return d.mean;
+    });
+
+
+    const getUSphysicalMean= () => {
+      if (USphysicalMean > 0) {
+        return USphysicalMean.toFixed(2);
+      }
+      return 0;
+    }
 
     // console.log('us capita mean', USperCapitaMean);
 
@@ -269,6 +319,8 @@ class App extends Component {
                         statePerCapitaValues={statePerCapitaValues}
                         onStatUpdate={this.onStatUpdate}
                         USperCapitaMean={USperCapita}
+                        USmentalMean={getMentalMean()}
+                        USphysicalMean={getUSphysicalMean()}
                         phiPerCapitaMean={phiPerCapitaMean}
                         sortedCapitas={sortedCapitas}
            />
@@ -277,7 +329,7 @@ class App extends Component {
 
            <rect x={0} y={0} width={1000} height={550} fill={"none"} stroke={"black"} ></rect>
 
-           <text x={15} y={450} className={"stateData"} fontWeight={"bold"}>Health Care Spending by State (2011-2017)</text>
+           <text x={15} y={450} className={"stateData"} fontWeight={"bold"}>Health Care Spending by State (2000-2017)</text>
            <text x={15} y={472} className={"stateData"}>State: {this.state.stateLabel}</text>
            <text x={15} y={495} className={"stateData"} fontWeight={"bold"} fontSize={13}>State Medicaid</text>
            <text x={15} y={515} className={"stateData"}>Ave. Yearly Increase: {this.state.perCapitaChange}%</text>
