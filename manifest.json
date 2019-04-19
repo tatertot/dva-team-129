@@ -1,0 +1,15 @@
+{
+  "short_name": "DVA Team 129",
+  "name": "Health Care Spending and Health Data",
+  "icons": [
+    {
+      "src": "faviconGT.ico",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
