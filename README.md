@@ -1,7 +1,10 @@
 ### Data Visualization Dashboard
 
-Visit the web site at https://tatertot.github.io/dva-team-129/
-![Image of Healthcare Costs and Health Dashboard](/public/dva-us.png)
+Visit the web site at [https://tatertot.github.io/dva-team-129/](https://tatertot.github.io/dva-team-129/)
+
+If for some reason the web site is down, it is also hosted at [https://dva-team-129.herokuapp.com/](https://tatertot.github.io/dva-team-129/)
+
+![Image of Healthcare Costs and Health Dashboard](/public/images/dva-us.png)
 
 Project Summary: The project attempts to show the relationship between health care spending and overall healthiness
 using data from the Behavioral Risk Factor Surveillance System (BRFSS) and from the Centers for Medicare and Medicaid
@@ -28,23 +31,27 @@ src/
                 DropDown.js
 ```
 
-### Setting Up Local Version of Website
+### Setting Up Local Environment of the Web Site
 
-* In your terminal clone this repo to your local environment
+In your terminal clone this repo to your local environment.
 
 ```
+
 git clone https://github.com/tatertot/dva-team-129.git
 
-```
-
-* Go the to `dva-team-129` folder in your terminal and enter:
 
 ```
+
+Go the to `dva-team-129` folder in your terminal and enter
+
+```
+
 npm start
 
+
 ```
 
-* This should open up a web browser with the site
+This should install all the project dependencies in the `package.json` file and open up a web browser with the site.
 
 
 === Bootstrapping a React App Original Documentation ===
