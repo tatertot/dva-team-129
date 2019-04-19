@@ -130,6 +130,9 @@ h2, .h2 {
   fill: "#023446";
 }
 
+.aside {
+  margin-left:10px;
+}
 .aside p {
     margin:15px 0 5px;
     padding:0;
@@ -140,10 +143,11 @@ h2, .h2 {
 }
 .aside ul li {
     margin:0;
-    padding:2px 0;
+    padding:2px 0 4px;
+    line-height: 1.4em
 }
 
-a:link, .datalink a:visited{
+a, a:link, .datalink a:visited{
   fill: #0579a3;
   text-decoration: none;
 }
