@@ -54,7 +54,7 @@ class LineGraph extends Component {
         key={year}
         style={{fill: "black", width: 2, height: 2, stroke: 'none', fontSize: '10'}}
         x={year + 22}
-        y={156 + yAmount}
+        y={147 + yAmount}
         title={null}
         r={3}
       >
