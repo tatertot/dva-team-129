@@ -31,28 +31,37 @@ src/
                 DropDown.js
 ```
 
+The rational for using React for this project was to be able to facilitate state management and to easily pass
+the data around to different components to make interactivity and re-usability easier.  The challenge was figuring
+who should have control of DOM, D3 or React.
+
 ### Setting Up Local Environment of the Web Site
 
 In your terminal clone this repo to your local environment.
 
 ```
-
 git clone https://github.com/tatertot/dva-team-129.git
-
 
 ```
 
 Go the to `dva-team-129` folder in your terminal and enter
 
 ```
-
 npm start
-
 
 ```
 
 This should install all the project dependencies in the `package.json` file and open up a web browser with the site.
 
+* Team 129 *
+
+This project was made for the Data Visual & Analytics course at Georgia Tech.
+
+Jessica Zhang
+Dan Siddall
+Marissa Marquez
+Scott Hill
+Arun Kasaranen
 
 === Bootstrapping a React App Original Documentation ===
 
