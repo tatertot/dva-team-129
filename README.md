@@ -1,3 +1,51 @@
+### Data Visualization Dashboard
+
+Visit the web site at https://tatertot.github.io/dva-team-129/
+![Image of Healthcare Costs and Health Dashboard](/public/dva-us.png)
+
+Project Summary: The project attempts to show the relationship between health care spending and overall healthiness
+using data from the Behavioral Risk Factor Surveillance System (BRFSS) and from the Centers for Medicare and Medicaid
+Services (CMS). The visualization shows the comparison of health and spending across the US and for each state.
+
+This app was initialized using `create-react-app`, the react specific documentation is included at the bottom.
+The *main* files created to develop the visualization were:
+
+```
+src/
+    App.js
+    components/
+        USmap/
+            USmap.js
+            USstate.js
+            Legend.js
+        LineGraph/
+            LineGraph.js
+            LegendGraph.js
+        DataContent/
+            DataContent.js
+        Controls/
+            DropDown/
+                DropDown.js
+```
+
+### Setting Up Local Version of Website
+
+* In your terminal clone this repo to your local environment
+
+```
+git clone https://github.com/tatertot/dva-team-129.git
+
+```
+
+* Go the to `dva-team-129` folder in your terminal and enter:
+
+```
+npm start
+
+```
+
+* This should open up a web browser with the site
+
 
 === Bootstrapping a React App Original Documentation ===
 
