@@ -14,7 +14,7 @@ const ChoroplethColors = [
     'rgb(8,48,107)'
 ];
 
-const BlankColor = 'rgb(198,219,239)';
+const blankColor = 'rgb(198,219,239)';
 
 class USstate extends Component {
   constructor(props) {
@@ -89,7 +89,7 @@ class USstate extends Component {
 
   render() {
     const { value, geoPath, feature, quantize, statePerCapitaValues, phiPerEnrolleeValues } = this.props;
-    let color = BlankColor;
+    let color = blankColor;
     if (value) {
       color = ChoroplethColors[quantize(value)];
     }

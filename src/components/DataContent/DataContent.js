@@ -15,21 +15,8 @@ class DataContent extends Component {
 
   render() {
     const { zoomToState, values, mentalHealthDays, physHealthDays, genHealthScore, statePerCapitaValues, USperCapitaMean,
-      phiPerCapitaMean, sortedCapitas, USmentalMean, USphysicalMean} = this.props;
+      phiPerCapitaMean, sortedCapitas, USmentalMean, USphysicalMean, capitaMeanPercentage, phiMeanPercentage} = this.props;
 
-
-    // const formattedPerCapitaYears = []
-    //   this.state.statePerCapitaValues.map(
-    //   state => _.each(state.years, (a,b) => {
-    //       formattedPerCapitaYears.push({'year': a});
-    //     })
-    // );
-    //
-    // const USperCapitaMean = d3.mean(formattedPerCapitaYears, (d) => {
-    //   return d.year;
-    // })
-
-    //this.props.onStatUpdate(USperCapitaMean);
     let capitaMean = 0;
     if(USperCapitaMean > 0) {
        capitaMean = parseInt((USperCapitaMean.toFixed(2))).toLocaleString();
@@ -39,6 +26,14 @@ class DataContent extends Component {
     let phiMean = 0;
     if(phiPerCapitaMean > 0) {
        phiMean = parseInt((phiPerCapitaMean)).toLocaleString();
+    }
+    let USavgPhi = 0;
+    if(phiMeanPercentage > 0) {
+       USavgPhi = phiMeanPercentage.toFixed(2);
+    }
+    let USavgCapita = 0;
+    if(capitaMeanPercentage > 0) {
+       USavgCapita = capitaMeanPercentage.toFixed(2);
     }
 
     let cap1, cap2, cap3, cap4, cap5, cap6;
@@ -62,7 +57,6 @@ class DataContent extends Component {
       cap6 = parseInt((sortedCapitas[0].mean)).toLocaleString();
     }
 
-
     if (zoomToState !== 'all') {
       return (
         <g>
@@ -81,27 +75,27 @@ class DataContent extends Component {
 
       return (
         <g>
-        <text x={530} y={40} fontSize={20} fontWeight={"bold"} fill={"#023446"}>Overall US Healthcare Spending</text>
-          <text x={530} y={80} fontSize={16} fill={"rgb(8, 48, 107)"}><tspan className="spending">${phiMean}</tspan> avg. private health care per enrollee</text>
-          <text x={530} y={110} fontSize={16} fill={"rgb(8, 48, 107)"}><tspan className="spending">${capitaMean}</tspan> avg. per capita</text>
+          <text x={530} y={40} fontSize={20} fontWeight={"bold"} fill={"#023446"}>Overall US Healthcare Spending (2000-2017)</text>
 
-        <text x={530} y={150} fontSize={18} fontWeight={"bold"}>States with highest per capita spending</text>
-        <text x={530} y={180} fontSize={16} fill={"rgb(8, 48, 107)"}>1. {st1}: ${cap1}</text>
-        <text x={530} y={200} fontSize={16} fill={"rgb(8, 48, 107)"}>2. {st2}: ${cap2}</text>
-        <text x={530} y={220} fontSize={16} fill={"rgb(8, 48, 107)"}>3. {st3}: ${cap3}</text>
+          <text x={530} y={80} fontSize={18} fontWeight={"bold"} fill={"#023446"}>Average Percent Increase</text>
+          <text x={530} y={110} fontSize={16} fill={"rgb(8, 48, 107)"}><tspan className="spending">{USavgCapita}%</tspan> Medicaid</text>
+          <text x={530} y={140} fontSize={16} fill={"rgb(8, 48, 107)"}><tspan className="spending">{USavgPhi}%</tspan> Private Health Insurance</text>
 
-        <text x={530} y={260} fontSize={18} fontWeight={"bold"}>States with lowest per capita spending</text>
-        <text x={530} y={290} fontSize={16} fill={"rgb(8, 48, 107)"}>1. {st6}: ${cap6}</text>
-        <text x={530} y={310} fontSize={16} fill={"rgb(8, 48, 107)"}>2. {st5}: ${cap5}</text>
-        <text x={530} y={330} fontSize={16} fill={"rgb(8, 48, 107)"}>3. {st4}: ${cap4}</text>
+          <text x={530} y={190}fontSize={18} fontWeight={"bold"}>Average Spending</text>
+          <text x={530} y={220} fontSize={16} fill={"rgb(8, 48, 107)"}><tspan className="spending">${capitaMean}</tspan> per capita</text>
+          <text x={530} y={250} fontSize={16} fill={"rgb(8, 48, 107)"}><tspan className="spending">${phiMean}</tspan> per enrollee (private health insurance)</text>
 
-        {/*<text x={530} y={370} fontSize={18} fontWeight={"bold"} fill={"#023446"}>Average Percent Increase</text>*/}
-        {/*<text x={530} y={400} fontSize={18} fill={"rgb(8, 48, 107)"}>XX%</text>*/}
+          <text x={530} y={300} fontSize={18} fontWeight={"bold"}>States with highest per capita spending</text>
+          <text x={530} y={330} fontSize={16} fill={"rgb(8, 48, 107)"}>1. {st1}: ${cap1}</text>
+          <text x={530} y={350} fontSize={16} fill={"rgb(8, 48, 107)"}>2. {st2}: ${cap2}</text>
+          <text x={530} y={370} fontSize={16} fill={"rgb(8, 48, 107)"}>3. {st3}: ${cap3}</text>
 
-        {/*<text x={530} y={440} fontSize={18} fontWeight={"bold"} fill={"#023446"}>Top 3 states with highest % increase</text>*/}
-        {/*<text x={530} y={470} fontSize={18} fill={"rgb(8, 48, 107)"}>1. State: xx%</text>*/}
-        {/*<text x={530} y={490} fontSize={18} fill={"rgb(8, 48, 107)"}>2. State: x%</text>*/}
-        {/*<text x={530} y={510} fontSize={18} fill={"rgb(8, 48, 107)"}>3. State: x%</text>*/}
+          <text x={530} y={410} fontSize={18} fontWeight={"bold"}>States with lowest per capita spending</text>
+          <text x={530} y={440} fontSize={16} fill={"rgb(8, 48, 107)"}>1. {st6}: ${cap6}</text>
+          <text x={530} y={460} fontSize={16} fill={"rgb(8, 48, 107)"}>2. {st5}: ${cap5}</text>
+          <text x={530} y={480} fontSize={16} fill={"rgb(8, 48, 107)"}>3. {st4}: ${cap4}</text>
+
+
         </g>)
     }
   }

@@ -193,7 +193,6 @@ class App extends Component {
         })
     );
 
-    // statePerCapitaValues[0]['years']
     const capita = []
     _.map(statePerCapitaValues, (state) => {
       const values = Object.values(state["years"]);
@@ -202,14 +201,6 @@ class App extends Component {
         });
         capita.push({'state':state["state"], 'mean':mean})
     });
-
-
-
-
-    //     const mentalHealthMean = d3.mean(mentalHealthData, (d) => {
-    //   return d.days;
-    // });
-    // console.log('mental', mentalHealthMean);
 
     const sortedCapitas =_.sortBy(capita, ['mean', 'state']);
     const USperCapita = d3.mean(formattedPerCapitaYears, (d) => {
@@ -269,11 +260,13 @@ class App extends Component {
       return 0;
     }
 
-    // console.log('us capita mean', USperCapitaMean);
+    const capitaMeanPercentage = d3.mean(statePerCapitaValues, (d) => {
+      return d.percentChange;
+    });
 
-    // if (USperCapitaMean) {
-    //   this.setState({USperCapitaMean});
-    // }
+    const phiMeanPercentage = d3.mean(phiPerEnrolleeValues, (d) => {
+      return d.percentChange;
+    });
 
     return (
        <div className="App container" id="main">
@@ -302,6 +295,7 @@ class App extends Component {
                   stateData={this.state.label}
                   statePerCapitaValues={statePerCapitaValues}
                   phiPerEnrolleeValues={phiPerEnrolleeValues}
+                  sortedCapitas={sortedCapitas}
            />
 
            <rect x={0} y={425} width={500} height={125} fill={"#dae3df"} ></rect>
@@ -323,6 +317,8 @@ class App extends Component {
                         USphysicalMean={getUSphysicalMean()}
                         phiPerCapitaMean={phiPerCapitaMean}
                         sortedCapitas={sortedCapitas}
+                        phiMeanPercentage={phiMeanPercentage}
+                        capitaMeanPercentage={capitaMeanPercentage}
            />
            <rect x={1} y={1} width={500} height={40} fill={"#023446"} ></rect>
            <text x={15} y={28} fill={"#abe2c9"} fontSize={20} fontWeight={"500"}>Healthcare Spending in the US</text>
@@ -345,31 +341,3 @@ class App extends Component {
 }
 
 export default App;
-  // getUSphiMean = () => {
-  //   console.log('phi mean',this.phiPerEnrolleeValue);
-  //   // debugger;
-  // }
-
-    // const capitaByState = () => {
-    //   for (let i=0; i < statePerCapitaValues.length - 1; i++) {
-    //   // for (let j = 0; j < statePerCapitaValues[i]["years"].length - 1; j++) {
-    //   //   console.log('capita', i, j, statePerCapitaValues[i]['years'][j]);
-    //   // }
-    //     const values = Object.values(statePerCapitaValues[i]["years"]);
-    //     const mean = d3.mean(values, (d) => {
-    //       return d
-    //     });
-    //     capita.push({i: mean})
-    //   }
-    //   debugger;
-    // }
-
-
-    // const eachCapita = []
-    // const test = formattedCapita
-    // _.each(formattedPerCapita, (d) => {
-    //   stateCapita = d3.mean(d, (i) => {
-    //     return i.year;
-    //   });
-    //   eachCapita.push({'mean': stateCapita});
-    // }

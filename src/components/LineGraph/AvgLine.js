@@ -26,16 +26,7 @@ const AvgLine = ({
 
   return (
       <g className="avgLine" transform={translate}>
-          {/*<text*/}
-              {/*x={width - 5}*/}
-              {/*y="0"*/}
-              {/*textAnchor="end"*/}
-              {/*fontSize={12}*/}
-              {/*fill={lineColor}*/}
-          {/*>*/}
-              {/*{label}*/}
-          {/*</text>*/}
-          <path d={line} fill={"none"} stroke={lineColor}/>
+        <path d={line} fill={"none"} stroke={lineColor}/>
       </g>
   );
 };

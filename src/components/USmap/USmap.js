@@ -15,11 +15,10 @@ class USmap extends Component {
     const projection = d3.geoAlbersUsa().scale([1000]); // scale things down so see entire US;
     this.state = {
       geoPath: d3.geoPath().projection(projection),
-      quantize: d3.scaleQuantize().range(d3.range(10)),
+      quantize: d3.scaleQuantize().range(d3.range(9)),
       projection
     };
   }
-
 
   // getDerivedStateFromProps gets called on every component render,
   // otherwise viz would be one update behind, however,
@@ -51,7 +50,7 @@ class USmap extends Component {
     }
 
     if (props.values) {
-      quantize.domain([0,10]);
+      quantize.domain([0,9]);
     }
 
     return {
@@ -71,12 +70,25 @@ class USmap extends Component {
     return null;
   }
 
+  // Us if we wanted to show per capita $$ for choropleth
+  getDollarValue(id) {
+
+    debugger;
+    const name = _.find(this.props.USstateNames, {stateId: id}).name;
+    const row = _.find(this.props.sortedCapitas, {name: name})
+    if (row) {
+
+      return row.mean;
+    }
+    return null;
+  }
 
 
   render() {
 
     const { geoPath, quantize, hover } = this.state,
-      { usTopoJson, values, zoomToState, updateDataFilter, onHover, statePerCapitaValues, phiPerEnrolleeValues} = this.props;
+      { usTopoJson, values, zoomToState, updateDataFilter, onHover, statePerCapitaValues, phiPerEnrolleeValues,
+      sortedCapitas} = this.props;
 
     if (!usTopoJson) {
       return null;
@@ -98,8 +110,13 @@ class USmap extends Component {
           statePerCapitaValues.map(d => [d.stateId, d.percentChange])
         );
 
+      const perCapitaDollarValueMap = _.fromPairs(
+          sortedCapitas.map(d => [d.id, d.mean])
+        );
+
         // console.log('values', stateValueMap);
       return (
+
         <g className="states">
           {USstates.map(feature => (
             <USstate
@@ -107,8 +124,8 @@ class USmap extends Component {
               feature={feature}
               zoomToState={zoomToState}
               key={feature.id}
-              // value={this.getValue(feature.id)}
               value={perCapitaValueMap[feature.id]}
+              // dollarValue={perCapitaDollarValueMap[feature.id]}
               quantize={quantize}
               updateDataFilter={updateDataFilter}
               stateName={feature.id}
@@ -119,7 +136,6 @@ class USmap extends Component {
               phiPerEnrolleeValues={phiPerEnrolleeValues}
             />
           ))};
-
           <path d={geoPath(USstateMesh)}
                 style={{
                 fill: "none",

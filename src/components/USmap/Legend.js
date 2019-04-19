@@ -46,7 +46,7 @@ class Legend extends Component {
           )
           }
         )};
-        <text x={110} y={415} fontSize={11} fontWeight={"bold"}>Annual Avg. Growth From Medicaid Enrollment 2011-2017</text>
+        <text x={110} y={415} fontSize={11} fontWeight={"bold"}>Annual Avg. Growth From Medicaid Enrollment 2000-2017</text>
       </g>
 
     );

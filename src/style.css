@@ -143,10 +143,11 @@ h2, .h2 {
     padding:2px 0;
 }
 
-.datalink a:link, .datalink a:visited{
+a:link, .datalink a:visited{
   fill: #0579a3;
+  text-decoration: none;
 }
-.datalink a:hover{
+a:hover{
 
   fill: #03455d;
 
