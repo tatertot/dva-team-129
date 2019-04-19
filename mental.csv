@@ -1,0 +1,49 @@
+﻿feature,coef
+decide_No,0.813106193
+decide_Yes,-0.754421676
+qlactlm2_No,0.39062402
+medcost_No,0.36110519
+qlactlm2_Yes,-0.331939503
+marital_widowed,0.304970408
+medcost_Yes,-0.302420672
+diffalon_No,0.288237163
+marital_separated,-0.270877681
+x.smoker3_current_smoker,-0.269302424
+diffalon_Yes,-0.229552646
+sex_male,0.217079519
+x.smoker3_never_smoked,0.209608688
+marital_married,0.181431898
+renthom1_own,0.178728696
+sex_female,-0.158395002
+x.incomg_<15k,-0.144037354
+x.incomg_50k+,0.122237645
+x.smoker3_former_smoker,0.118378253
+marital_never_married,-0.104630231
+marital_mem_of_unmarried_couple,-0.090790292
+exerany2_Yes,0.088248687
+x.totinda_1,0.088248687
+renthom1_other,-0.086419939
+checkup1_Within past year,0.085816227
+educa_college,0.082791007
+x.rfbmi5_No,0.06501943
+drocdy3._no_drink,0.063951386
+educa_some_college,-0.061455153
+x.incomg_35-50k,0.05668191
+x.incomg_25-35k,0.053949065
+educa_no_school,0.039629486
+marital_divorced,0.038580416
+checkup1_5 or more years ago,-0.035800905
+renthom1_rent,-0.03362424
+x.incomg_15-25k,-0.030146749
+hlthpln1_No,0.029590763
+exerany2_No,-0.02956417
+x.totinda_2,-0.02956417
+hlthpln1_Yes,0.029093755
+educa_elementary,0.022061802
+checkup1_never,0.021757071
+educa_some_high_school,-0.020916167
+checkup1_Within past 5 years,-0.010077344
+x.rfbmi5_Yes,-0.006334913
+drocdy3._atleast_1,-0.005266869
+educa_high_school,-0.003426458
+checkup1_Within past 2 years,-0.003010531
