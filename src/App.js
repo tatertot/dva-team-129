@@ -271,7 +271,7 @@ class App extends Component {
     return (
        <div className="App container" id="main">
          <h1 style={{"marginBottom":"15px"}}>Health Care Spending and Healthiness in the US</h1>
-         <p style={{"marginTop":"15px"}}><strong>Project Summary: </strong>The project attempts to show the relationship between health care spending and overall healthiness using data from
+         <p style={{"marginTop":"15px","width":"1000px"}}><strong>Project Summary: </strong>The project attempts to show the relationship between health care spending and overall healthiness using data from
            the Behavioral Risk Factor Surveillance System (BRFSS) and from the Centers for Medicare and Medicaid Services (CMS).
            The visualization shows the comparison of health and spending across the US and for each state.
          </p>
