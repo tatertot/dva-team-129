@@ -54,16 +54,13 @@ npm start
 This should install all the project dependencies in the `package.json` file and open up a web browser with the site.
 
 
-==========
-*Team 129:* Jessica Zhang, Dan Siddall, Marissa Marquez, Scott Hill, Arun Kasaranen
+###Team 129
+Jessica Zhang, Dan Siddall, Marissa Marquez, Scott Hill, Arun Kasaranen
 
 _This project was made for the Data Visual & Analytics course at Georgia Tech._
-==========
 
 
-
-
-*=== Bootstrapping a React App Original Documentation ===*
+=== Bootstrapping a React App Original Documentation ===
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
