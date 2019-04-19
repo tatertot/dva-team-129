@@ -32,7 +32,6 @@ class Legend extends Component {
           }
         )};
 
-
         <circle
             style={{fill: "darksalmon", width: 20, height: 20, stroke: 'gray'}}
             cx={30}
@@ -49,10 +48,3 @@ class Legend extends Component {
 }
 
 export default Legend;
-
-//
-// // Handmade legend
-// svg.append("circle").attr("cx",200).attr("cy",130).attr("r", 6).style("fill", "#69b3a2")
-// svg.append("circle").attr("cx",200).attr("cy",160).attr("r", 6).style("fill", "#404080")
-// svg.append("text").attr("x", 220).attr("y", 130).text("variable A").style("font-size", "15px").attr("alignment-baseline","middle")
-// svg.append("text").attr("x", 220).attr("y", 160).text("variable B").style("font-size", "15px").attr("alignment-baseline","middle")

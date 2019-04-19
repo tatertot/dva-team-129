@@ -1,8 +1,6 @@
 // src/components/USstate/Legend.js
-import D3blackbox from "../D3blackbox";
 import * as d3 from "d3";
 import React, {Component} from "react";
-import _ from "lodash";
 
 const color = d3.scaleThreshold().domain(d3.range(1, 10)).range(d3.schemeGreens[9]);
 
@@ -21,7 +19,6 @@ const ChoroplethColors = [
 const xScale = d3.scaleLinear()
   .domain([1, 10])
   .rangeRound([1,10]);
-
 
 class Legend extends Component {
 

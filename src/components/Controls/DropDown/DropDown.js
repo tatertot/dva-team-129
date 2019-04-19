@@ -5,7 +5,6 @@ class DropDown extends React.Component {
   selectUSstate = ( event, newState ) => {
     // this.setState({value: event.target.value});
     let selected = event.target.value;
-    console.log('selected->', event.target.value, selected, newState);
     this.props.updateDataFilter( selected, !newState);
   };
 
@@ -40,7 +39,6 @@ class DropDown extends React.Component {
         </select>
       </div>
     )
-
 
   }
 }

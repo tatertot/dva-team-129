@@ -79,7 +79,7 @@ class LineGraph extends Component {
       .domain([0, 14000]).range([120, 0])
 
     const yScale = d3.scaleLinear()
-      .domain([0, 31])
+      .domain([0, 30])
       .range([height, 0])
 
     const line = d3.line()
@@ -108,15 +108,6 @@ class LineGraph extends Component {
         <text x={575} y={65} fontWeight={"bold"} fill={"rgb(63, 59, 54)"}>Mental and Physical Healthy Days Per Month</text>
         <svg x={520} y={80}>
           <Legend />
-          {/*<text*/}
-              {/*x={width +20}*/}
-              {/*y={yScale(USmentalMean) - 12}*/}
-              {/*textAnchor="end"*/}
-              {/*fontSize={12}*/}
-              {/*fill={"gray"}*/}
-          {/*>US average*/}
-          {/*</text>*/}
-
           <AvgLine x={520}
                    y={10}
                    width={400}

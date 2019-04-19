@@ -27,7 +27,7 @@ export const loadData = (callback = _.noop) => {
               statePerCapita,
               phiPerEnrollee,
               USstateNames]) => {
-        console.log('hello data');
+
         callback({
           usTopoJson: us,
           sampleData: sampleData,

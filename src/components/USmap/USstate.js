@@ -26,7 +26,6 @@ class USstate extends Component {
     }
   }
 
-
   // need to create for interaction between d3 and react
   pRef = React.createRef();
 
@@ -74,12 +73,6 @@ class USstate extends Component {
   getStateName() {
     return  _.find(this.props.USstateNames, { id: parseInt(this.pRef.current.attributes.title.value) }).name;
   }
-
-  // getPerCapitaChange() {
-  //   return _.find(this.props.statePerCapitaValues, {state: stateName}).percentChange;
-  //
-  // }
-
 
   selectUSstate = (event, newState) => {
     const stateName = _.find(this.props.USstateNames, { id: parseInt(this.pRef.current.attributes.title.value) }).name;
