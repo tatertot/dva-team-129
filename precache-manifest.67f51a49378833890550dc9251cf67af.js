@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/dva-team-129/static/css/main.42508107.chunk.css"
   },
   {
-    "revision": "31de66514e01a0f8284e6105f7352420",
+    "revision": "db5e063fab1dd79a6f14bd80c5e95896",
     "url": "/dva-team-129/index.html"
   }
 ];
