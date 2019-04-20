@@ -303,7 +303,7 @@ class App extends Component {
                  y="0"
                  width="500"
                  height="600"
-                 style={{ fill: "#f6f0ea" }}
+                 style={{ fill: "#f7f4ee" }}
            />
            <DataContent zoomToState={zoomToState}
                         values={stateValues}
