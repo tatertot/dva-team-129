@@ -1,11 +1,11 @@
 ﻿feature,Name,coef
-decide_No,Mental Health Issue,0.813106193
-decide_Yes,No Menatal Health Issue,-0.754421676
+decide_No,No Mental or Emotional weakness,0.813106193
+decide_Yes,Mental or Emotional weakness,-0.754421676
 qlactlm2_No,Not Disabled,0.39062402
-medcost_No,No Healthcare Access,0.36110519
+medcost_No,Healthcare accessible,0.36110519
 qlactlm2_Yes,Disabled,-0.331939503
 marital_widowed,Widow,0.304970408
-medcost_Yes,Health Care Access,-0.302420672
+medcost_Yes,Healthcare not accessible due to cost,-0.302420672
 diffalon_No,Can move,0.288237163
 marital_separated,Separated,-0.270877681
 x.smoker3_current_smoker,Everyday Smoker,-0.269302424

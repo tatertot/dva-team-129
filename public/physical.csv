@@ -17,8 +17,8 @@ marital_mem_of_unmarried_couple,Member of Unmarried couple,0.087547036
 marital_never_married,Single,0.166243223
 marital_separated,Separated,-0.191544862
 marital_widowed,Widow,0.025102369
-medcost_No,No Healthcare Access,0.31028382
-medcost_Yes,Health Care Access,-0.27213189
+medcost_No,Healthcare accessible,0.31028382
+medcost_Yes,Healthcare not accessible due to cost,-0.27213189
 qlactlm2_No,Not Disabled,0.794492746
 qlactlm2_Yes,Disabled,-0.756340816
 renthom1_other,Other,-0.029069701
