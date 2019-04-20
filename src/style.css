@@ -27,7 +27,7 @@ body {
 }
 h1, h2, h3,
 .h1, .h2 {
-  font-family: "Helvetica Neue";
+  font-family: "Helvetica Neue",Helvetica, Arial, SansSerif;
   font-weight: 500;
   color:#023446;
 }

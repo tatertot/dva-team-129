@@ -54,12 +54,14 @@ This should install all the project dependencies in the `package.json` file and 
 
 
 ### Team 129
-Jessica Zhang, Dan Siddall, Marissa Marquez, Scott Hill, Arun Kasaranen
+The was made up Georgia Tech students in the OMSCS and OMSA program: Jessica Zhang, Dan Siddall, Marissa Marquez, Scott Hill, Arun Kasaranen
 
 This project was made for the Data Visual & Analytics course at Georgia Tech.
 
 
-=== Bootstrapping a React App Original Documentation ===
+=============================================================================================
+===================== Bootstrapping a React App Original Documentation  =====================
+=============================================================================================
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
