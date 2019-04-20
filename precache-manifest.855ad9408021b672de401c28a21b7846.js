@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/dva-team-129/static/js/runtime~main.12473f45.js"
   },
   {
-    "revision": "4cd9db3c81e2cdeba7d6",
+    "revision": "c08a17c54710376e9e80",
     "url": "/dva-team-129/static/js/main.55221968.chunk.js"
   },
   {
@@ -12,11 +12,11 @@ self.__precacheManifest = [
     "url": "/dva-team-129/static/js/2.99d90fa9.chunk.js"
   },
   {
-    "revision": "4cd9db3c81e2cdeba7d6",
-    "url": "/dva-team-129/static/css/main.09d32069.chunk.css"
+    "revision": "c08a17c54710376e9e80",
+    "url": "/dva-team-129/static/css/main.7fcc0fef.chunk.css"
   },
   {
-    "revision": "2078be1161491079f5d209adabe8b33c",
+    "revision": "193bdd1b743a6036f9f191ce4f78c54a",
     "url": "/dva-team-129/index.html"
   }
 ];
