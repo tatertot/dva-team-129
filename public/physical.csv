@@ -1,0 +1,39 @@
+﻿feature,Name,coef
+drocdy3._atleast_1,Drink occasionally,0.259293739
+drocdy3._no_drink,Does not drink,-0.221141808
+educa_college,College Education,0.75518335
+educa_elementary,Elementary Education,-0.664419636
+educa_high_school,High School Education,0.2635345
+educa_no_school,No School Education,-0.654222805
+educa_some_college,College dropout,0.489404823
+educa_some_high_school,High School dropout,-0.151328301
+exerany2_No,No Exercise,-0.273164804
+exerany2_Yes,Does Exercise,0.311316735
+hlthpln1_No,No Healthcare coverage,0.107934975
+hlthpln1_Yes,Healthcare coverage available,-0.069783044
+marital_divorced,Divorced,-0.012106
+marital_married,Married,-0.037089836
+marital_mem_of_unmarried_couple,Member of Unmarried couple,0.087547036
+marital_never_married,Single,0.166243223
+marital_separated,Separated,-0.191544862
+marital_widowed,Widow,0.025102369
+medcost_No,No Healthcare Access,0.31028382
+medcost_Yes,Health Care Access,-0.27213189
+qlactlm2_No,Not Disabled,0.794492746
+qlactlm2_Yes,Disabled,-0.756340816
+renthom1_other,Other,-0.029069701
+renthom1_own,Own House,0.063462515
+sex_female,Female,0.096184418
+sex_male,Male,-0.058032487
+useequip_No,No Health Equipment,0.479428541
+useequip_Yes,Use Health Equipment,-0.44127661
+x.incomg_<15k,Income < 15K,-0.564766422
+x.incomg_15-25k,Income 15-25K,-0.245143286
+x.incomg_25-35k,Income 25-35K,0.013117732
+x.incomg_35-50k,Income 35-50K,0.233127333
+x.incomg_50k+,Income > 50K,0.601816574
+x.rfbmi5_No,Not overweight,0.140336152
+x.rfbmi5_Yes,Overweight,-0.102184221
+x.smoker3_current_smoker,Everyday Smoker,-0.144637311
+x.smoker3_former_smoker,Former Smoker,-0.040622647
+x.smoker3_never_smoked,Never Smoked,0.223411888

@@ -1,0 +1,49 @@
+﻿feature,Name,coef
+decide_No,Mental Health Issue,0.813106193
+decide_Yes,No Menatal Health Issue,-0.754421676
+qlactlm2_No,Not Disabled,0.39062402
+medcost_No,No Healthcare Access,0.36110519
+qlactlm2_Yes,Disabled,-0.331939503
+marital_widowed,Widow,0.304970408
+medcost_Yes,Health Care Access,-0.302420672
+diffalon_No,Can move,0.288237163
+marital_separated,Separated,-0.270877681
+x.smoker3_current_smoker,Everyday Smoker,-0.269302424
+diffalon_Yes,Difficulty in moving,-0.229552646
+sex_male,Male,0.217079519
+x.smoker3_never_smoked,Never Smoked,0.209608688
+marital_married,Married,0.181431898
+renthom1_own,Own House,0.178728696
+sex_female,Female,-0.158395002
+x.incomg_<15k,Income < 15K,-0.144037354
+x.incomg_50k+,Income > 50K,0.122237645
+x.smoker3_former_smoker,Former Smoker,0.118378253
+marital_never_married,Single,-0.104630231
+marital_mem_of_unmarried_couple,Member of Unmarried couple,-0.090790292
+exerany2_Yes,Does Exercise,0.088248687
+x.totinda_1,Active Adults,0.088248687
+renthom1_other,Other,-0.086419939
+checkup1_Within past year,Doc visit within a yr,0.085816227
+educa_college,College Education,0.082791007
+x.rfbmi5_No,Not overweight,0.06501943
+drocdy3._no_drink,Does not drink,0.063951386
+educa_some_college,College dropout,-0.061455153
+x.incomg_35-50k,Income 35-50K,0.05668191
+x.incomg_25-35k,Income 25-35K,0.053949065
+educa_no_school,No School Education,0.039629486
+marital_divorced,Divorced,0.038580416
+checkup1_5 or more years ago,Doc visited 5 yrs ago,-0.035800905
+renthom1_rent,Rent,-0.03362424
+x.incomg_15-25k,Income 15-25K,-0.030146749
+hlthpln1_No,No Healthcare coverage,0.029590763
+exerany2_No,No Exercise,-0.02956417
+x.totinda_2,Some Exercise,-0.02956417
+hlthpln1_Yes,Healthcare coverage available,0.029093755
+educa_elementary,Elementary Education,0.022061802
+checkup1_never,Never visited Doc,0.021757071
+educa_some_high_school,High School dropout,-0.020916167
+checkup1_Within past 5 years,Visited Doc in the past 5 yrs,-0.010077344
+x.rfbmi5_Yes,Overweight,-0.006334913
+drocdy3._atleast_1,Drink occasionally,-0.005266869
+educa_high_school,High School Education,-0.003426458
+checkup1_Within past 2 years,Visited Doc in the past 2 yrs,-0.003010531
