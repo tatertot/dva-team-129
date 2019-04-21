@@ -2,8 +2,6 @@
 
 Visit the web site at [https://tatertot.github.io/dva-team-129/](https://tatertot.github.io/dva-team-129/)
 
-If for some reason the web site is down, it is also hosted at [https://dva-team-129.herokuapp.com/](https://tatertot.github.io/dva-team-129/)
-
 ![Image of Healthcare Costs and Health Dashboard](/public/images/dva-us.png)
 
 Project Summary: The project attempts to show the relationship between health care spending and overall healthiness
